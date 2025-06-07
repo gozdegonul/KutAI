@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anasayfa</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body class="bg-white">
+    <div style="font-size: 17px">
+      <nav
+        class="navbar navbar-expand-lg bg-light position-relative py-2 font height:10vh"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMain"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="navbar-center d-none d-lg-block">
+            <ul class="navbar-nav flex-row gap-4">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Anasayfa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#biz-kimiz"> Biz Kimiz</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Oyun Hakkında
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#oyunkonusu">Oyun Konusu</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#karakterler"
+                      >Oyun Karakterleri</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="#">Oyun Haritası</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="PsikolojikTahlil.html"
+                  >Psikolojik Tahlil</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#footer">İletişim</a>
+              </li>
+            </ul>
+          </div>
+          <div class="d-flex gap-2 navbar-right">
+            <a class="btn btn-outline-primary rounded-5 px-3" href="Giriş.html">Giriş</a>
+            <a class="btn btn-danger rounded-5 px-3" href="Kayıt.html">Kayıt Ol</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+    <section id="mainpage" class="video">
+      <video autoplay="" muted="" loop="" playsinline="" class="bg-video">
+        <source src="video.mp4" type="video/mp4" />
+      </video>
+      <a
+        class="btn btn-danger rounded-5 px-3"
+        href="#"
+        id="btnoyna"
+        >Oyun Oyna</a
+      >
+    </section>
+
+
+    <section class="game-intro py-5 bg-light overflow-hidden " id="oyunkonusu">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 order-md-1 order-2">
+            <div class="p-4 p-md-5 animate-on-scroll" >
+              <span class="badge bg-danger mb-3">PSİKOLOJİK TAHLİL OYUNU</span>
+              <h2 class="fw-bold mb-3">Kendini Keşfetmeye Hazır mısın?</h2>
+              <div
+                class="border-bottom border-danger border-2 mb-3"
+                style="width: 50px"
+              ></div>
+              <p class="lead">
+                Yağmurlu bir öğle sonrası, Beyoğlu Akademisi'nin taş bina
+                yurduna adım atıyorsun. 204 numaralı odada Burhan adında bir oda
+                arkadaşıyla karşılaşıyorsun.
+              </p>
+              <ul class="list-unstyled mt-3">
+                <li class="mb-2">
+                  <i class="bi bi-check-circle-fill text-danger me-2"></i>
+                  Gerçekçi diyaloglar ve psikolojik senaryolar
+                </li>
+                <li class="mb-2">
+                  <i class="bi bi-check-circle-fill text-danger me-2"></i> Big
+                  Five kişilik modeline göre analiz
+                </li>
+                <li class="mb-2">
+                  <i class="bi bi-check-circle-fill text-danger me-2"></i>
+                  Seçimlerinle şekillenen dinamik hikaye
+                </li>
+              </ul>
+              <div class="mt-4">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                  <a href="#" class="btn btn-danger btn-lg px-4 rounded-pill">
+                    <i class="bi bi-play-fill me-2"></i> Hemen Oyna
+                  </a>
+                  <a
+                    href="#"
+                    class="btn btn-outline-dark btn-lg px-4 rounded-pill ms-md-2"
+                  >
+                    <i class="bi bi-book-fill me-2"></i> Hikayeyi İncele
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 order-md-2 order-1">
+            <div class="overflow-hidden rounded-4 shadow-lg">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+                class="img-fluid h-100 object-fit-cover"
+                alt="Beyoğlu Akademisi"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="karakterler">
+      <div class="container">
+        <h2 class="text-center section-title">Karakterler</h2>
+        <div class="character-carousel-wrapper position-relative">
+          <button class="carousel-control prev-btn" data-dir="prev">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <div class="character-carousel">
+            <div class="character-card active" data-index="0">
+              <div class="character-image">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
+                  alt="Burhan"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="character-details">
+            <h3 class="mb-2">Burhan</h3>
+            <p class="character-type">Oda Arkadaşı</p>
+            <div class="character-traits">
+              <span class="trait-badge">Düzenli</span>
+              <span class="trait-badge">Sakin</span>
+              <span class="trait-badge">Analitik</span>
+            </div>
+            <p class="character-description">
+              Yurtta seninle kalan düzenli ve planlı biri. Eski oda arkadaşının dağınıklığıyla ilgili kaygılı.
+            </p>
+            <p class="story-presence mt-3">
+              <strong>Rolü:</strong> <i>"Açıklık"</i> özelliğini ölçen sorularla kişilik testine giriş sağlar.
+            </p>
+          </div>
+      
+            </div>
+
+            <div class="character-card" data-index="1">
+              <div class="character-image">
+                <img
+                  src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80"
+                  alt="Tuncay"
+                  class="img-fluid"
+                />
+              </div>
+                 <div class="character-details">
+            <h3 class="mb-2">Tuncay</h3>
+            <p class="character-type">Berber</p>
+            <div class="character-traits">
+              <span class="trait-badge">Geleneksel</span>
+              <span class="trait-badge">Minnettar</span>
+              <span class="trait-badge">Güven Arayan</span>
+            </div>
+            <p class="character-description">
+              Mahalle berberi. Kaybolan cüzdanı üzerinden güven konusunu sorgular.
+            </p>
+            <p class="story-presence mt-3">
+              <strong>Rolü:</strong> <i>"Güven"</i> özelliğini ölçen senaryoya yön verir.
+            </p>
+          </div>
+        </div>
+
+            <div class="character-card" data-index="2">
+              <div class="character-image">
+                <img
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80"
+                  alt="Ahmet Amca"
+                  class="img-fluid"
+                />
+              </div>
+               <div class="character-details">
+            <h3 class="mb-2">Ahmet Amca</h3>
+            <p class="character-type">Bakkal</p>
+            <div class="character-traits">
+              <span class="trait-badge">Yardımsever</span>
+              <span class="trait-badge">Geleneksel</span>
+              <span class="trait-badge">Deneyimli</span>
+            </div>
+            <p class="character-description">
+              Yaşlı, yardımsever bir bakkal. Yardım teklifine içtenlikle karşılık verir.
+            </p>
+            <p class="story-presence mt-3">
+              <strong>Rolü:</strong> <i>"Uyumluluk"</i>ve <i>"Empati"</i> özelliklerini test eden sahnede yer alır.
+            </p>
+          </div>
+        </div>
+
+
+            <div class="character-card" data-index="3">
+              <div class="character-image">
+                <img
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
+                  alt="Zeynep"
+                  class="img-fluid"
+                />
+              </div>
+              <div class="character-details">
+            <h3 class="mb-2">Zeynep</h3>
+            <p class="character-type">Öğrenci</p>
+            <div class="character-traits">
+              <span class="trait-badge">Enerjik</span>
+              <span class="trait-badge">Sosyal</span>
+              <span class="trait-badge">Spontane</span>
+            </div>
+            <p class="character-description">
+              Sosyal etkinliklere düşkün. Partiye davet ederek spontane yaşamı teşvik eder.
+            </p>
+            <p class="story-presence mt-3">
+              <strong>Rolü:</strong> <i>"Dışadönüklük"</i> özelliğini değerlendiren sahnede rol alır.
+            </p>
+          </div>
+        </div>
+          </div>
+          <button class="carousel-control next-btn" data-dir="next">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <section id="biz-kimiz" class="py-5 bg-light-custom">
+      <div class="container">
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-6">
+            <h2 class="section-title mb-4">Biz Kimiz?</h2>
+            <p class="lead mb-4">
+              Tulpar Grubu olarak, farklı disiplinleri bir araya getirerek
+              yenilikçi ve ilham verici bir öğrenme ortamı sunuyoruz. Web
+              geliştirme, yapay zeka, oyun geliştirme ve psikoloji alanlarındaki
+              uzmanlığımızla, geleceğin liderlerini yetiştirmeyi hedefliyoruz.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <div class="ratio ratio-16x9 shadow rounded-4 overflow-hidden">
+              <iframe
+                src="https://www.youtube.com/embed/your_youtube_video_id"
+                title="Beyoğlu Akademisi Tanıtım Videosu"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="section-title text-center mb-5">Ekiplerimiz</h3>
+
+        <div class="row g-4">
+          <!-- Web Ekibi -->
+          <div class="col-md-6 col-lg-3">
+            <div class="team-card card shadow-sm">
+              <img
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                class="card-img-top team-img"
+                alt="Web Geliştirme Ekibi"
+              />
+              <div class="card-body text-center">
+                <div class="team-icon">
+                  <i class="bi bi-code-square"></i>
+                </div>
+                <h5 class="card-title">Web Geliştirme</h5>
+                <p class="card-text small text-muted mb-3">
+                  Modern ve kullanıcı odaklı web çözümleri üretiyoruz.
+                </p>
+                <div class="team-members">
+                  <p class="team-name mb-1">Gözde Gönül</p>
+                  <p class="team-name mb-1">Yusuf Güneş</p>
+                  <p class="team-name">Fatma Zehra Aytaş</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Ekibi -->
+          <div class="col-md-6 col-lg-3">
+            <div class="team-card card shadow-sm">
+              <img src="https://www.innova.com.tr/medias/yapay-zeka-ve-makine-ogrenimi-teknolojisi-gelismeleri.jpg"
+              alt="Yapay Zeka Ekibi">
+              <div class="card-body text-center">
+                <div class="team-icon">
+                  <i class="bi bi-robot"></i>
+                </div>
+                <h5 class="card-title">Yapay Zeka</h5>
+                <p class="card-text small text-muted mb-3">
+                  Akıllı sistemler ve algoritmalar geliştiriyoruz.
+                </p>
+                <div class="team-members">
+                  <p class="team-name mb-1">Esra Pala</p>
+                  <p class="team-name mb-1">Gül Nihal Gür</p>
+                  <p class="team-name">Fatmanur Ceviz</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Oyun Ekibi -->
+          <div class="col-md-6 col-lg-3">
+            <div class="team-card card shadow-sm">
+              <img
+                src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                class="card-img-top team-img"
+                alt="Oyun Geliştirme Ekibi"
+              />
+              <div class="card-body text-center">
+                <div class="team-icon">
+                  <i class="bi bi-controller"></i>
+                </div>
+                <h5 class="card-title">Oyun Geliştirme</h5>
+                <p class="card-text small text-muted mb-3">
+                  Eğlenceli ve etkileyici oyun deneyimleri tasarlıyoruz.
+                </p>
+                <div class="team-members">
+                  <p class="team-name mb-1">Halil Özerdem</p>
+                  <p class="team-name mb-1">Arda Arslan</p>
+                  <p class="team-name">İrem Altun</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Psikoloji Ekibi -->
+          <div class="col-md-6 col-lg-3">
+            <div class="team-card card shadow-sm">
+              <img
+                src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                class="card-img-top team-img"
+                alt="Psikoloji Ekibi"
+              />
+              <div class="card-body text-center">
+                <div class="team-icon">
+                  <i class="bi bi-heart-pulse"></i>
+                </div>
+                <h5 class="card-title">Psikoloji</h5>
+                <p class="card-text small text-muted mb-3">
+                  İnsan zihni ve davranışlarını anlama yolculuğundayız.
+                </p>
+                <div class="team-members">
+                  <p class="team-name mb-1">Zeynep Tuğçe Bayrak</p>
+                  <p class="team-name">[Bir kişi daha]</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="akademik-danismanlar" class="py-5 bg-white">
+      <div class="container">
+        <h2 class="section-title text-center mb-5">Akademik Danışmanlarımız</h2>
+
+        <div class="row justify-content-center g-4">
+          <!-- 1. Danışman -->
+          <div class="col-md-6 col-lg-4">
+            <div class="advisor-card card shadow-sm text-center p-4">
+              <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                class="advisor-img rounded-circle mx-auto mb-3"
+                alt="Umut Mert Aksoy"
+              />
+              <h4 class="mb-2">Umut Mert Aksoy</h4>
+              <p class="text-muted mb-3">Akademik Danışman</p>
+              <div class="social-links">
+                <a href="#" class="text-decoration-none me-2"
+                  ><i class="bi bi-linkedin"></i
+                ></a>
+                <a href="#" class="text-decoration-none me-2"
+                  ><i class="bi bi-twitter-x"></i
+                ></a>
+                <a href="#" class="text-decoration-none"
+                  ><i class="bi bi-google"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Danışman -->
+          <div class="col-md-6 col-lg-4">
+            <div class="advisor-card card shadow-sm text-center p-4">
+              <img
+                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                class="advisor-img rounded-circle mx-auto mb-3"
+                alt="Hasan Çiftçi"
+              />
+              <h4 class="mb-2">Hasan Çiftçi</h4>
+              <p class="text-muted mb-3">Akademik Danışman</p>
+              <div class="social-links">
+                <a href="#" class="text-decoration-none me-2"
+                  ><i class="bi bi-linkedin"></i
+                ></a>
+                <a href="#" class="text-decoration-none me-2"
+                  ><i class="bi bi-twitter-x"></i
+                ></a>
+                <a href="#" class="text-decoration-none"
+                  ><i class="bi bi-google"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <h5>Kut-AI</h5>
+            <p>
+              Psikolojik analiz ve kişisel gelişim için gelişmiş testler
+              sunuyoruz. Amacımız, insanların kendilerini daha iyi anlamalarına
+              yardımcı olmak.
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h5>Hızlı Linkler</h5>
+            <div class="footer-links">
+              <a href="Anasayfa.css">Anasayfa</a>
+              <a href="Anasayfa.css">Oyun Türü</a>
+              <a href="PsikolojikTahlil.html">Psikolojik Tahlil</a>
+              <a href="#">Gizlilik Politikası</a>
+              <a href="#">Kullanım Koşulları</a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>İletişim Bilgileri</h5>
+            <div class="contact-info">
+              <p><i class="bi bi-telephone"></i> +90 555 123 45 67</p>
+              <p><i class="bi bi-envelope"></i> info@kayai.com</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5>Bize Ulaşın</h5>
+            <form class="contact-form">
+              <input
+                type="text"
+                class="form-control rounded-0"
+                placeholder="Adınız"
+                required
+              />
+              <input
+                type="email"
+                class="form-control rounded-0"
+                placeholder="E-posta"
+                required
+              />
+              <textarea
+                class="form-control rounded-0"
+                rows="3"
+                placeholder="Mesajınız"
+                required
+              ></textarea>
+              <button type="submit" class="btn btn-danger rounded-0">
+                Gönder
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center copyright">
+            <p>&copy; 2025 Kut-AI. Tüm hakları saklıdır.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script>
+   
+document.addEventListener("DOMContentLoaded", function () {
+  const elements = document.querySelectorAll(".animate-on-scroll");
+  const oyunHakkindaLink = document.querySelector('a[href="#oyunkonusu"]');
+  const oyunHakkindaSection = document.getElementById("oyunkonusu");
+
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top < window.innerHeight && rect.bottom > 0
+    );
+  }
+
+  function checkScroll() {
+    elements.forEach((element) => {
+      if (isElementInViewport(element)) {
+        element.classList.add("active");
+      } else {
+        element.classList.remove("active");
+      }
+    });
+  }
+
+  // Sayfa yüklendiğinde: eğer oyun-hakkinda görünüyorsa
+  if (oyunHakkindaSection && isElementInViewport(oyunHakkindaSection)) {
+    const animatedElements = oyunHakkindaSection.querySelectorAll(".animate-on-scroll");
+    animatedElements.forEach((el) => el.classList.add("active"));
+  }
+
+  // Navbar'dan tıklanınca smooth scroll + animasyon
+  if (oyunHakkindaLink) {
+    oyunHakkindaLink.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      oyunHakkindaSection.scrollIntoView({ behavior: "smooth" });
+
+      // Scroll tamamlanmadan önce animasyon başlatmak gecikmeli olabilir,
+      // bu yüzden hafif gecikme koyabiliriz:
+      setTimeout(() => {
+        const animatedElements = oyunHakkindaSection.querySelectorAll(".animate-on-scroll");
+        animatedElements.forEach((el) => el.classList.add("active"));
+      }, 500); // scrollIntoView tamamlanmadan biraz sonra
+    });
+  }
+
+  window.addEventListener("scroll", checkScroll);
+  checkScroll(); // Sayfa yüklendiğinde bir kez çalıştır
+});
+
+
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const carousel = document.querySelector(".character-carousel");
+        const cards = document.querySelectorAll(".character-card");
+        const prevBtn = document.querySelector(".prev-btn");
+        const nextBtn = document.querySelector(".next-btn");
+        const cardCount = cards.length;
+        let currentIndex = 0;
+        const cardsPerPage = 1;
+
+        function updateCarousel() {
+          const cardWidth = cards[0].offsetWidth + 20; // Kart genişliği + margin
+          const translateValue = -currentIndex * cardWidth;
+
+          carousel.style.transform = `translateX(${translateValue}px)`;
+
+          cards.forEach((card, index) => {
+            if (index === currentIndex) {
+              card.classList.add("active");
+              card.style.opacity = 1;
+              card.style.transform = "scale(1)";
+            } else {
+              card.classList.remove("active");
+              card.style.opacity = 0.5;
+              card.style.transform = "scale(0.95)";
+            }
+          });
+        }
+
+        function goPrev() {
+          currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+          updateCarousel();
+        }
+
+        function goNext() {
+          currentIndex = (currentIndex + 1) % cardCount;
+          updateCarousel();
+        }
+
+        prevBtn.addEventListener("click", goPrev);
+        nextBtn.addEventListener("click", goNext);
+
+        function initializeCarousel() {
+          updateCarousel();
+        }
+
+        window.addEventListener("resize", initializeCarousel);
+        initializeCarousel();
+      });
+   
+      
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

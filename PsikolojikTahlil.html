@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psikolojik Tahlil</title>  
+    <link rel="stylesheet" href="PsikolojikTahlil.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-white" >
+    <div style="font-size: 17px">
+      <nav
+        class="navbar navbar-expand-lg bg-light position-relative py-2 font height:10vh"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMain"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="navbar-center d-none d-lg-block">
+            <ul class="navbar-nav flex-row gap-4">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Anasayfa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html"> Biz Kimiz</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Oyun Hakkında
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="index.html">Oyun Konusu</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="index.html"
+                      >Oyun Karakterleri</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="index.html">Oyun Haritası</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#psikoloji"
+                  >Psikolojik Tahlil</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#footer">İletişim</a>
+              </li>
+            </ul>
+          </div>
+          <div class="d-flex gap-2 navbar-right">
+            <a class="btn btn-outline-primary rounded-5 px-3" href="Giriş.html">Giriş</a>
+            <a class="btn btn-danger rounded-5 px-3" href="Kayıt.html">Kayıt Ol</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+      
+ 
+<main>
+  <section class="bg-section" style="background-color: #e9ecef;  height: 92.9vh;" id="psikoloji">
+     <div class="container align-items-center">
+       <div class="row align-items-center ">
+          <div class = "col animate-on-scroll" >
+
+            <h1 class="amatic-sc-bold"> Psikolojinizi Anketler ve Oyunlarla <br>  Test Edin </h1>
+
+            <p class = " open-sans"  >KayAI birçok farklı test ve sonuçları gelişmiş analiz yeteneği ile sizlere sunar.</p>
+            <a href="#anket" class="btn btn-danger rounded-5 px-4">Testler Hakkında Detaylı Bilgi</a>
+       
+
+          </div>
+         <div class = "col">
+           <img src="psikoloji.png" alt="PsikolojikResim" style="padding: 100px; margin-left:100px;">
+        
+         </div>
+      </div>
+    <div>
+ <section>
+</main>
+
+
+  <section class="stats-section" id="stats">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-4">
+        <div id="counter1" class="stat-number">0</div>
+        <div>Anket Türü</div>
+      </div>
+      <div class="col-md-4">
+        <div id="counter2" class="stat-number">0</div>
+        <div>Oyun Modu</div>
+      </div>
+      <div class="col-md-4">
+        <div id="counter3" class="stat-number">0</div>
+        <div>Sınırsız Rapor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <section class="bg-ankettur open-sans" id="anket">
+    <h3 class="text-center section-title">Anket Türleri</h3>
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 border rounded shadow-sm survey-card bg-light">
+        
+            <h5 class="survey-title"> <i class="bi bi-journal-text icon"></i> Klasik Anket</h5>
+            <div class="survey-description">
+              Bu testler daha çok kişinin kendi düşünce yapısını öğrenebilmek için oluşturulmuştur. <br><br>
+              <a  class="btn btn-outline-primary  rounded-5 px-4">Örnek Anket</a>
+            </div>
+          </div>
+        </div>
+ 
+
+      
+        <div class="col-md-4">
+          <div class="p-4 border rounded shadow-sm survey-card bg-light"> 
+            <h5 class="survey-title"><i class="bi bi-ui-checks icon"></i> Çoklu Seçmeli Anket</h5>
+            <div class="survey-description">
+             Kullanıcının birkaç seçeneğini görerek onlardan hangisini seçeceği öğrenilmeye çalışılmıştır. <br><br>
+            <a class="btn btn-outline-primary  rounded-5 px-4">Örnek Anket</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="p-4 border rounded shadow-sm survey-card bg-light">
+          
+            <h5 class="survey-title">   <i class="bi bi-question-circle icon"></i> Evet / Hayır Anketi</h5>
+            <div class="survey-description">
+              Kullanıcıdan kısa Evet Hayır cevaplar alınmak istenmiştir. <br><br>
+              <a  class="btn btn-outline-primary  rounded-5 px-4">Örnek Anket</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div> 
+ </section>
+
+
+
+
+  <section id="rapor-features" class="bg-light py-5 rapor-features-section">
+    <div class="container">
+      <h3 class="text-center section-title">Rapor Özellikleri</h3>
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <div class="p-4 border rounded shadow-sm bg-white h-100">
+            <h5 class="text-danger"><i class="bi bi-bar-chart-line"></i> Kişisel Psikolojik Profil</h5>
+            <p>
+              Her test sonrası kişiye özel grafikler ve açıklamalarla psikolojik durumun detaylı analizi sunulur.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-4 border rounded shadow-sm bg-white h-100">
+            <h5 class="text-danger"><i class="bi bi-clipboard-data"></i> Test Sonuçlarının Detayları</h5>
+            <p>
+              Verilen cevaplara göre alt başlıklar (örneğin: stres seviyesi, karar verme yetisi) ile sonuçların yorumları paylaşılır.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-4 border rounded shadow-sm bg-white h-100">
+            <h5 class="text-danger"><i class="bi bi-download"></i> Erişim ve İndirme</h5>
+            <p>
+              Raporlara profilinizden sınırsız şekilde erişebilir, PDF formatında dışa aktarabilirsiniz.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="ornek-rapor.pdf" class="btn btn-outline-danger rounded-5 px-4" target="_blank">Örnek Raporu Görüntüle</a>
+      </div>
+
+    </div>
+  </section>
+
+   <footer class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>Kut-AI</h5>
+                    <p>Psikolojik analiz ve kişisel gelişim için gelişmiş testler sunuyoruz. Amacımız, insanların kendilerini daha iyi anlamalarına yardımcı olmak.</p>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Hızlı Linkler</h5>
+                    <div class="footer-links">
+                        <a href="Anasayfa.css">Anasayfa</a>
+                        <a href="Anasayfa.css">Oyun Türü</a>
+                        <a href="PsikolojikTahlil.html">Psikolojik Tahlil</a>
+                        <a href="#">Gizlilik Politikası</a>
+                        <a href="#">Kullanım Koşulları</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>İletişim Bilgileri</h5>
+                    <div class="contact-info">
+                        <p><i class="bi bi-telephone"></i> +90 555 123 45 67</p>
+                        <p><i class="bi bi-envelope"></i> info@kayai.com</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Bize Ulaşın</h5>
+                    <form class="contact-form">
+                        <input type="text" class="form-control rounded-0" placeholder="Adınız" required>
+                        <input type="email" class="form-control rounded-0" placeholder="E-posta" required>
+                        <textarea class="form-control rounded-0" rows="3" placeholder="Mesajınız" required></textarea>
+                        <button type="submit" class="btn btn-danger rounded-0">Gönder</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12 text-center copyright">
+                    <p>&copy; 2025 Kut-AI. Tüm hakları saklıdır.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+      
+
+
+
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.6.2/countUp.umd.js"></script>
+
+  <script>
+   
+document.addEventListener("DOMContentLoaded", function () {
+  const elements = document.querySelectorAll(".animate-on-scroll");
+  const psikolojiLink = document.querySelector('a[href="#psikoloji"]');
+  const psikolojiSection = document.getElementById("psikoloji");
+
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top < window.innerHeight && rect.bottom > 0
+    );
+  }
+
+  function checkScroll() {
+    elements.forEach((element) => {
+      if (isElementInViewport(element)) {
+        element.classList.add("active");
+      } else {
+        element.classList.remove("active");
+      }
+    });
+  }
+
+  
+  if (psikolojiSection && isElementInViewport(psikolojiSection)) {
+    const animatedElements = psikolojiSection.querySelectorAll(".animate-on-scroll");
+    animatedElements.forEach((el) => el.classList.add("active"));
+  }
+
+
+  if (oyunHakkindaLink) {
+      psikolojiLink.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      psikolojiSection.scrollIntoView({ behavior: "smooth" });
+
+
+      setTimeout(() => {
+        const animatedElements = psikolojiSection.querySelectorAll(".animate-on-scroll");
+        animatedElements.forEach((el) => el.classList.add("active"));
+      }, 500);
+    });
+  }
+
+  window.addEventListener("scroll", checkScroll);
+  checkScroll(); 
+});
+
+
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const counters = [
+      { id: 'counter1', endVal: 10 },
+      { id: 'counter2', endVal: 1 },
+      { id: 'counter3', endVal: 9999 }
+    ];
+
+    const options = {
+      duration: 3, 
+      separator: ','
+    };
+
+    counters.forEach(counter => {
+      const el = document.getElementById(counter.id);
+      const countUp = new CountUp.CountUp(el, counter.endVal, options);
+      if (!countUp.error) {
+        countUp.start();
+      } else {
+        console.error(countUp.error);
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>
+
+
+

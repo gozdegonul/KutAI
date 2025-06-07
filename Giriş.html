@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="Giriş.css" />
+  </head>
+  <body>
+    <div class="main">
+      <input type="checkbox" id="chk" aria-hidden="true" />
+
+      <div class="signup">
+        <form>
+          <label for="chk" aria-hidden="true">Kayıt Ol</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Kullanıcı Adı"
+            required=""
+          />
+
+          <div class="password-container">
+            <input
+              type="password"
+              id="signupPassword"
+              name="password"
+              placeholder="Şifre"
+              required=""
+            />
+            <span
+              class="eye-icon"
+              onclick="togglePasswordVisibility('signupPassword', this)"
+              >👁️</span
+            >
+          </div>
+
+          <input
+            type="date"
+            name="birthdate"
+            placeholder="Doğum Tarihi"
+            required=""
+          />
+          <select name="studentType" required="">
+            <option disabled="" selected="" value="">Öğrenci Türü</option>
+            <option value="ilkokul">İlkokul</option>
+            <option value="ortaokul">Ortaokul</option>
+            <option value="lise">Lise</option>
+            <option value="universite">Üniversite</option>
+            <option value="diger">Diğer</option>
+          </select>
+          <select required="" name="gender">
+            <option disabled="" selected="" value="">Cinsiyet</option>
+            <option value="erkek">Erkek</option>
+            <option value="kiz">Kız</option>
+          </select>
+          <textarea
+            name="about"
+            placeholder="Kendinizden bahsedin..."
+            rows="3"
+          ></textarea>
+          <button type="submit">Kayıt Ol</button>
+        </form>
+      </div>
+
+      <div class="login">
+        <form>
+          <label for="chk" aria-hidden="true">Giriş Yap</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Kullanıcı Adı"
+            required=""
+          />
+          <div class="password-container">
+            <input
+              type="password"
+              id="loginPassword"
+              name="pswd"
+              placeholder="Şifre"
+              required=""
+            />
+            <span
+              class="eye-icon"
+              onclick="togglePasswordVisibility('loginPassword', this)"
+              >👁️</span
+            >
+          </div>
+          <button type="submit">Giriş Yap</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      // --- DROPDOWN MENÜ KONTROLÜ ---
+      function toggleDropdown(id) {
+        const element = document.getElementById(id);
+        const isOpening = !element.classList.contains("show");
+
+        // Tüm açık menüleri kapat
+        document
+          .querySelectorAll(".dropdown-menu, .user-menu")
+          .forEach((el) => {
+            el.classList.remove("show");
+          });
+
+        // Yalnızca tıklanan menüyü aç
+        if (isOpening) {
+          element.classList.add("show");
+        }
+      }
+
+      // Sayfa genelinde tıklama kontrolü: menüler dışına tıklanınca kapat
+      window.onclick = function (event) {
+        if (
+          !event.target.closest(".menu-btn") &&
+          !event.target.closest(".user-btn")
+        ) {
+          document
+            .querySelectorAll(".dropdown-menu, .user-menu")
+            .forEach((el) => {
+              el.classList.remove("show");
+            });
+        }
+      };
+
+      // --- FORM GEÇİŞLERİ VE AÇMA/KAPAMA KONTROLÜ ---
+      const formOverlay = document.getElementById("formOverlay");
+      const formCheckbox = document.getElementById("chk"); // Giriş/Kayıt sekmesi kontrol
+      const openLoginLink = document.getElementById("openLoginLink");
+      const openSignupLink = document.getElementById("openSignupLink");
+
+      function openForm(showLogin) {
+        // Önce açık menüleri kapat
+        document
+          .querySelectorAll(".dropdown-menu, .user-menu")
+          .forEach((el) => {
+            el.classList.remove("show");
+          });
+
+        // Formu göster
+        formOverlay.classList.add("active");
+        document.body.classList.add("blurry");
+        document.documentElement.style.overflowY = "hidden";
+
+        // Giriş mi Kayıt mı gösterileceğini ayarla
+        formCheckbox.checked = showLogin;
+      }
+
+      function closeForm() {
+        formOverlay.classList.remove("active");
+        document.body.classList.remove("blurry");
+        document.documentElement.style.overflowY = "auto";
+      }
+
+      // Giriş bağlantısına tıklanırsa formu giriş için aç
+      if (openLoginLink) {
+        openLoginLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          openForm(true);
+        });
+      }
+
+      // Kayıt bağlantısına tıklanırsa formu kayıt için aç
+      if (openSignupLink) {
+        openSignupLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          openForm(false);
+        });
+      }
+
+      // Form dışına tıklanınca formu kapat
+      formOverlay.addEventListener("click", function (event) {
+        if (event.target === formOverlay) {
+          closeForm();
+        }
+      });
+
+      // Şifreyi göster/gizle ikonu için
+      function togglePasswordVisibility(fieldId, iconElement) {
+        const passwordField = document.getElementById(fieldId);
+        const isPassword = passwordField.type === "password";
+        passwordField.type = isPassword ? "text" : "password";
+        iconElement.textContent = isPassword ? "🙈" : "👁️";
+      }
+
+      // ESC tuşuna basınca formu kapat
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.key === "Escape" &&
+          formOverlay.classList.contains("active")
+        ) {
+          closeForm();
+        }
+      });
+    </script>
+
+  </body>
+</html>
