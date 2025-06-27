@@ -394,17 +394,57 @@ section.video {
 }
 
 .team-card {
-  transition: all 0.3s ease;
   height: 100%;
-  border: none;
-  border-radius: 10px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
 
+.team-card .card-body {
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
 }
 
 .team-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.team-members {
+  margin-top: auto; /* İsimleri kartın en altına iter */
+  padding-top: 1rem; /* Üstteki içerikle arasına boşluk koyar */
+}
+
+.member-item {
+  display: flex;
+  justify-content: space-between; /* İsim sola, ikonlar sağa */
+  align-items: center; /* Dikeyde ortala */
+  width: 100%;
+  margin-bottom: 0.5rem; /* İsimler arası boşluk */
+  padding: 0.25rem 0;
+  border-bottom: 1px solid #f0f0f0; /* İsimler arasına ince bir çizgi */
+}
+
+.member-item:last-child {
+  border-bottom: none; /* Son ismin altındaki çizgiyi kaldır */
+}
+
+.member-item .team-name {
+  margin-bottom: 0 !important;
+  text-align: left; /* İsimleri sola hizala */
+  font-weight: 600;
+}
+
+.member-socials a {
+  color: #adb5bd; /* İkonların başlangıç rengi */
+  text-decoration: none;
+  margin-left: 0.75rem; /* İkonlar arası boşluk */
+  font-size: 1.1rem; /* İkon boyutu */
+  transition: color 0.3s ease;
+}
+
+.member-socials a:hover {
+  color: #dc3545; /* Fare üzerine gelince kırmızı olsun */
 }
 
 .team-img {
