@@ -179,7 +179,29 @@ section {
   background-color: darkred;
 }
 
+#oyun-konteyneri {
+  /* Başlangıçta gizli olsun */
+  display: none; 
 
+  /* Ekranı tamamen kaplaması için */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Diğer elemanların (örneğin butonun) üzerinde görünsün diye */
+  z-index: 10; 
+  
+  background-color: #000; /* Oyun yüklenirken siyah arka plan */
+}
+
+/* iframe'in konteynerı tam doldurması ve kenarlık olmaması için */
+#oyun-konteyneri iframe {
+  width: 100%;
+  height: 100%;
+  border: none; /* iframe etrafındaki çirkin çerçeveyi kaldırır */
+}
 
 /* Ekran genişliği 768px ve üzeri için (md breakpoint) */
 @media (min-width: 768px) {
