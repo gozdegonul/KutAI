@@ -81,13 +81,22 @@
 
 
     <section id="mainpage" class="video">
-  
-      <video autoplay="" muted="" loop="" playsinline="" class="bg-video">
+      <!-- section id="mainpage" içindeki kısmı bu şekilde güncelleyin -->
+
+      <video autoplay muted loop playsinline class="bg-video">
         <source src="video.mp4" type="video/mp4" />
       </video>
-      <a class="btn btn-danger rounded-5 px-3" href="https://ardaarslan.com.tr/oyun/" id="btnoyna">
+
+      <a class="btn btn-danger rounded-5 px-3" href="#" id="btnoyna">
         Oyun Oyna
       </a>
+
+  <!-- Unity oyununu tutacak olan konteyner -->
+  <div id="oyun-konteyneri">
+    <!-- iframe ile Unity oyununu buraya gömüyoruz -->
+    <!-- iframe'in src'sine çalışan GitHub linkini koyun -->
+    <iframe src="https://gozdegonul.github.io/KutAI/oyun/" frameborder="0"></iframe>
+  </div>
 
     </section>
 
@@ -514,132 +523,99 @@
     </footer>
 
     
-    <script>
-   
-document.addEventListener("DOMContentLoaded", function () {
-  const elements = document.querySelectorAll(".animate-on-scroll");
-  const oyunHakkindaLink = document.querySelector('a[href="#oyunkonusu"]');
-  const oyunHakkindaSection = document.getElementById("oyunkonusu");
+    <!-- </body> etiketinden hemen önce bunu ekleyin -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-  function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    return (
-      rect.top < window.innerHeight && rect.bottom > 0
-    );
-  }
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- Scroll Animasyon Kodu ---
+    const elements = document.querySelectorAll(".animate-on-scroll");
+    const oyunHakkindaLink = document.querySelector('a[href="#oyunkonusu"]');
+    const oyunHakkindaSection = document.getElementById("oyunkonusu");
 
-  function checkScroll() {
-    elements.forEach((element) => {
-      if (isElementInViewport(element)) {
-        element.classList.add("active");
-      } else {
-        element.classList.remove("active");
-      }
-    });
-  }
+    function isElementInViewport(el) {
+        if (!el) return false;
+        const rect = el.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
 
-  // Sayfa yüklendiğinde: eğer oyun-hakkinda görünüyorsa
-  if (oyunHakkindaSection && isElementInViewport(oyunHakkindaSection)) {
-    const animatedElements = oyunHakkindaSection.querySelectorAll(".animate-on-scroll");
-    animatedElements.forEach((el) => el.classList.add("active"));
-  }
+    function checkScroll() {
+        elements.forEach((element) => {
+            if (isElementInViewport(element)) {
+                element.classList.add("active");
+            }
+        });
+    }
 
-  // Navbar'dan tıklanınca smooth scroll + animasyon
-  if (oyunHakkindaLink) {
-    oyunHakkindaLink.addEventListener("click", function (event) {
-      event.preventDefault();
+    if (oyunHakkindaLink && oyunHakkindaSection) {
+        oyunHakkindaLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            oyunHakkindaSection.scrollIntoView({ behavior: "smooth" });
+            setTimeout(() => {
+                const animatedElements = oyunHakkindaSection.querySelectorAll(".animate-on-scroll");
+                animatedElements.forEach((el) => el.classList.add("active"));
+            }, 500);
+        });
+    }
+    window.addEventListener("scroll", checkScroll);
+    checkScroll();
 
-      oyunHakkindaSection.scrollIntoView({ behavior: "smooth" });
-
-      // Scroll tamamlanmadan önce animasyon başlatmak gecikmeli olabilir,
-      // bu yüzden hafif gecikme koyabiliriz:
-      setTimeout(() => {
-        const animatedElements = oyunHakkindaSection.querySelectorAll(".animate-on-scroll");
-        animatedElements.forEach((el) => el.classList.add("active"));
-      }, 500); // scrollIntoView tamamlanmadan biraz sonra
-    });
-  }
-
-  window.addEventListener("scroll", checkScroll);
-  checkScroll(); // Sayfa yüklendiğinde bir kez çalıştır
-});
-
-
-
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const carousel = document.querySelector(".character-carousel");
+    // --- Karakter Carousel Kodu ---
+    const carousel = document.querySelector(".character-carousel");
+    if (carousel) {
         const cards = document.querySelectorAll(".character-card");
         const prevBtn = document.querySelector(".prev-btn");
         const nextBtn = document.querySelector(".next-btn");
         const cardCount = cards.length;
         let currentIndex = 0;
-        const cardsPerPage = 1;
 
         function updateCarousel() {
-          const cardWidth = cards[0].offsetWidth + 20; // Kart genişliği + margin
-          const translateValue = -currentIndex * cardWidth;
-
-          carousel.style.transform = `translateX(${translateValue}px)`;
-
-          cards.forEach((card, index) => {
-            if (index === currentIndex) {
-              card.classList.add("active");
-              card.style.opacity = 1;
-              card.style.transform = "scale(1)";
-            } else {
-              card.classList.remove("active");
-              card.style.opacity = 0.5;
-              card.style.transform = "scale(0.95)";
-            }
-          });
+            if (cards.length === 0) return;
+            const cardWidth = cards[0].offsetWidth + 20;
+            const translateValue = -currentIndex * cardWidth;
+            carousel.style.transform = `translateX(${translateValue}px)`;
+            cards.forEach((card, index) => {
+                card.classList.toggle("active", index === currentIndex);
+            });
         }
-
-        function goPrev() {
-          currentIndex = (currentIndex - 1 + cardCount) % cardCount;
-          updateCarousel();
-        }
-
-        function goNext() {
-          currentIndex = (currentIndex + 1) % cardCount;
-          updateCarousel();
-        }
-
-        prevBtn.addEventListener("click", goPrev);
-        nextBtn.addEventListener("click", goNext);
-
-        function initializeCarousel() {
-          updateCarousel();
-        }
-
-        window.addEventListener("resize", initializeCarousel);
-        initializeCarousel();
-      });
-   
-      
-    </script>
-
-    <script>
-      // Gerekli HTML elemanlarını seçiyoruz
-      const oynaButonu = document.getElementById('btnoyna');
-      const oyunKonteyneri = document.getElementById('oyun-konteyneri');
-      const arkaPlanVideo = document.querySelector('.bg-video');
-
-      // Butona tıklama olayını dinliyoruz
-      oynaButonu.addEventListener('click', function(event) {
-        // a etiketinin varsayılan davranışını (sayfayı yenileme gibi) engelle
-        event.preventDefault(); 
         
-        // Oyun konteynerini görünür yap
-        oyunKonteyneri.style.display = 'block';
-
-        // Butonu ve videoyu gizleyerek kalabalığı ortadan kaldır
-        oynaButonu.style.display = 'none';
-        if(arkaPlanVideo) {
-          arkaPlanVideo.style.display = 'none';
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener("click", () => {
+                currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+                updateCarousel();
+            });
+            nextBtn.addEventListener("click", () => {
+                currentIndex = (currentIndex + 1) % cardCount;
+                updateCarousel();
+            });
         }
-      });
-    </script>
+        
+        window.addEventListener("resize", updateCarousel);
+        updateCarousel();
+    }
+
+    // --- "Oyun Oyna" Butonu İşlevselliği ---
+    const oynaButonu = document.getElementById('btnoyna');
+    const oyunKonteyneri = document.getElementById('oyun-konteyneri');
+    const arkaPlanVideo = document.querySelector('.bg-video');
+
+    if (oynaButonu && oyunKonteyneri) {
+        oynaButonu.addEventListener('click', function(event) {
+            event.preventDefault(); // Linkin varsayılan davranışını engelle
+            
+            oyunKonteyneri.style.display = 'block'; // Oyun konteynerini göster
+
+            // Butonu ve videoyu gizle
+            oynaButonu.style.display = 'none';
+            if (arkaPlanVideo) {
+                arkaPlanVideo.style.display = 'none';
+            }
+        });
+    }
+  });
+</script>
+
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
