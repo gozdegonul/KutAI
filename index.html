@@ -87,9 +87,12 @@
         <source src="video.mp4" type="video/mp4" />
       </video>
 
-      <a class="btn btn-danger rounded-5 px-3" href="#" id="btnoyna">
-        Oyun Oyna
-      </a>
+      <a class="btn btn-danger rounded-5 px-3" 
+   href="https://ardaarslan.com.tr/oyun/" 
+   id="btnoyna" 
+   target="_blank">  <!-- Yeni sekmede açmak için bu satırı ekleyin -->
+  Oyun Oyna
+</a>
 
   <!-- Unity oyununu tutacak olan konteyner -->
   <div id="oyun-konteyneri">
@@ -97,6 +100,8 @@
     <!-- iframe'in src'sine çalışan GitHub linkini koyun -->
     <iframe src="https://ardaarslan.com.tr/oyun/" frameborder="0"></iframe>
   </div>
+
+      
 
     </section>
 
@@ -594,25 +599,7 @@
         updateCarousel();
     }
 
-    // --- "Oyun Oyna" Butonu İşlevselliği ---
-    const oynaButonu = document.getElementById('btnoyna');
-    const oyunKonteyneri = document.getElementById('oyun-konteyneri');
-    const arkaPlanVideo = document.querySelector('.bg-video');
-
-    if (oynaButonu && oyunKonteyneri) {
-        oynaButonu.addEventListener('click', function(event) {
-            event.preventDefault(); // Linkin varsayılan davranışını engelle
-            
-            oyunKonteyneri.style.display = 'block'; // Oyun konteynerini göster
-
-            // Butonu ve videoyu gizle
-            oynaButonu.style.display = 'none';
-            if (arkaPlanVideo) {
-                arkaPlanVideo.style.display = 'none';
-            }
-        });
-    }
-  });
+    
 </script>
 
     
