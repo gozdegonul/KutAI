@@ -253,21 +253,23 @@ section.video {
 }
 
 .character-image {
-  height: 350px; 
+  height: 300px; /* Yüksekliği biraz ayarlayabilirsiniz */
   overflow: hidden;
   border-radius: 10px;
   margin-bottom: 15px;
-  background-size: contain; /* veya 'cover' */
-  background-position: center top; /* Ortala ve üste hizala */
-  background-repeat: no-repeat;
+  background-color: #f8f9fa; /* Resmin arkasında kalacak boşluk için arka plan rengi */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+
 /*
 .character-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  transition: transform 0.5s ease;
+  width: auto; /* Genişliği otomatik yap */
+  max-width: 100%; /* Konteynerdan taşmasın */
+  height: 100%; /* Yüksekliği konteyner kadar yap */
+  object-fit: contain; 
 }*/
 
 .character-card:hover .character-image img {
