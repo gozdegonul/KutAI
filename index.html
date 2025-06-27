@@ -81,17 +81,21 @@
 
 
     <section id="mainpage" class="video">
+  
       <video autoplay="" muted="" loop="" playsinline="" class="bg-video">
         <source src="video.mp4" type="video/mp4" />
       </video>
-      <a
-        class="btn btn-danger rounded-5 px-3"
-        href="https://gozdegonul.github.io/KutAI/oyun/"
-        id="btnoyna"
-        >Oyun Oyna</a
-      >
-    </section>
+      <a class="btn btn-danger rounded-5 px-3" href="https://gozdegonul.github.io/KutAI/oyun/" id="btnoyna">
+        Oyun Oyna
+      </a>
 
+      <!-- YENİ EKLENECEK KISIM: Unity oyununu tutacak olan konteyner -->
+      <div id="oyun-konteyneri">
+        <!-- iframe ile Unity oyununu buraya gömüyoruz -->
+        <iframe src="unity-oyun/index.html"></iframe>
+      </div>
+
+    </section>
 
     <section class="game-intro py-5 bg-light overflow-hidden " id="oyunkonusu">
       <div class="container">
@@ -163,13 +167,13 @@
             <div class="character-card active" data-index="0">
               <div class="character-image">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                  alt="Burhan"
+                  src="resimler/gizem.jpg"
+                  alt="Gizem"
                   class="img-fluid"
                 />
               </div>
               <div class="character-details">
-            <h3 class="mb-2">Burhan</h3>
+            <h3 class="mb-2">Gizem</h3>
             <p class="character-type">Oda Arkadaşı</p>
             <div class="character-traits">
               <span class="trait-badge">Düzenli</span>
@@ -316,9 +320,8 @@
                   Modern ve kullanıcı odaklı web çözümleri üretiyoruz.
                 </p>
                 <div class="team-members">
-                  <p class="team-name mb-1">Gözde Gönül</p>
-                  <p class="team-name mb-1">Yusuf Güneş</p>
-                  <p class="team-name">Fatma Zehra Aytaş</p>
+                  <p class="team-name mb-1">Gözde GÖNÜL</p>
+                  <p class="team-name mb-1">Fatma Zehra AYTAŞ</p>
                 </div>
               </div>
             </div>
@@ -338,9 +341,8 @@
                   Akıllı sistemler ve algoritmalar geliştiriyoruz.
                 </p>
                 <div class="team-members">
-                  <p class="team-name mb-1">Esra Pala</p>
-                  <p class="team-name mb-1">Gül Nihal Gür</p>
-                  <p class="team-name">Fatmanur Ceviz</p>
+                  <p class="team-name mb-1">Esra PALA</p>
+                  <p class="team-name mb-1">Gül Nihal GÜR</p>
                 </div>
               </div>
             </div>
@@ -363,9 +365,9 @@
                   Eğlenceli ve etkileyici oyun deneyimleri tasarlıyoruz.
                 </p>
                 <div class="team-members">
-                  <p class="team-name mb-1">Halil Özerdem</p>
-                  <p class="team-name mb-1">Arda Arslan</p>
-                  <p class="team-name">İrem Altun</p>
+                  <p class="team-name mb-1">Arda ARSLAN</p>
+                  <p class="team-name mb-1">İrem ALTUN</p>
+                  <p class="team-name mb-1">Fatmanur CEVİZ</p>
                 </div>
               </div>
             </div>
@@ -389,7 +391,7 @@
                 </p>
                 <div class="team-members">
                   <p class="team-name mb-1">Zeynep Tuğçe Bayrak</p>
-                  <p class="team-name">[Bir kişi daha]</p>
+                  <p class="team-name">Buse YÜCEL</p>
                 </div>
               </div>
             </div>
@@ -407,21 +409,19 @@
           <div class="col-md-6 col-lg-4">
             <div class="advisor-card card shadow-sm text-center p-4">
               <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                src="resimler/Umut Mert Aksoyy.jpg"
                 class="advisor-img rounded-circle mx-auto mb-3"
                 alt="Umut Mert Aksoy"
               />
-              <h4 class="mb-2">Umut Mert Aksoy</h4>
+              <h4 class="mb-2">Umut Mert AKSOY</h4>
               <p class="text-muted mb-3">Akademik Danışman</p>
               <div class="social-links">
-                <a href="#" class="text-decoration-none me-2"
+                <a href="https://www.linkedin.com/in/umut-mert-aksoy-66251556/" class="text-decoration-none me-2"
                   ><i class="bi bi-linkedin"></i
                 ></a>
-                <a href="#" class="text-decoration-none me-2"
-                  ><i class="bi bi-twitter-x"></i
-                ></a>
-                <a href="#" class="text-decoration-none"
-                  ><i class="bi bi-google"></i
+                
+                <a href="mailto:umutmertaksoy@aydin.edu.tr" class="text-decoration-none"
+                  ><i class="bi bi-envelope"></i
                 ></a>
               </div>
             </div>
@@ -431,21 +431,19 @@
           <div class="col-md-6 col-lg-4">
             <div class="advisor-card card shadow-sm text-center p-4">
               <img
-                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                src="resimler/hasan çifci.jpg"
                 class="advisor-img rounded-circle mx-auto mb-3"
                 alt="Hasan Çiftçi"
               />
-              <h4 class="mb-2">Hasan Çiftçi</h4>
+              <h4 class="mb-2">Hasan ÇİFCİ</h4>
               <p class="text-muted mb-3">Akademik Danışman</p>
               <div class="social-links">
-                <a href="#" class="text-decoration-none me-2"
+                <a href="https://www.linkedin.com/in/dr-hasan-%C3%A7-7681a0222/" class="text-decoration-none me-2"
                   ><i class="bi bi-linkedin"></i
                 ></a>
-                <a href="#" class="text-decoration-none me-2"
-                  ><i class="bi bi-twitter-x"></i
-                ></a>
-                <a href="#" class="text-decoration-none"
-                  ><i class="bi bi-google"></i
+                
+                <a href="mailto:hasancifci@aydin.edu.tr" class="text-decoration-none"
+                  ><i class="bi bi-envelope"></i
                 ></a>
               </div>
             </div>
@@ -625,6 +623,28 @@ document.addEventListener("DOMContentLoaded", function () {
       });
    
       
+    </script>
+
+    <script>
+      // Gerekli HTML elemanlarını seçiyoruz
+      const oynaButonu = document.getElementById('btnoyna');
+      const oyunKonteyneri = document.getElementById('oyun-konteyneri');
+      const arkaPlanVideo = document.querySelector('.bg-video');
+
+      // Butona tıklama olayını dinliyoruz
+      oynaButonu.addEventListener('click', function(event) {
+        // a etiketinin varsayılan davranışını (sayfayı yenileme gibi) engelle
+        event.preventDefault(); 
+        
+        // Oyun konteynerini görünür yap
+        oyunKonteyneri.style.display = 'block';
+
+        // Butonu ve videoyu gizleyerek kalabalığı ortadan kaldır
+        oynaButonu.style.display = 'none';
+        if(arkaPlanVideo) {
+          arkaPlanVideo.style.display = 'none';
+        }
+      });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
