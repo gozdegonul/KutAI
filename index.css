@@ -14,7 +14,10 @@ body {
 .navbar {
   height: 10vh;
   font-size: 17px;
-  z-index: +1;
+  position: relative; /* z-index'in düzgün çalışması için gereklidir */
+  z-index: 1050; /* Bootstrap'in standart dropdown z-index'inden daha yüksek bir değer */
+  background-color: white; /* Arka planı beyaz yapalım ki resmin üzerinden geçerken okunabilsin */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Hafif bir gölge ekleyelim */
 }
 
 .nav-link {
