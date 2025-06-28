@@ -253,29 +253,26 @@ section.video {
 }
 
 .character-image {
-  /* Yükseklik-genişlik oranını belirleyelim (örneğin 3:4 oranı) */
-  position: relative;
-  width: 100%;
-  padding-top: 133.33%; /* 4/3 = 1.3333 -> Bu, dikey bir kutu oluşturur */
+  width: 100%; /* Konteyner, kartın tam genişliğini kullansın */
+  height: 350px; /* Görsel alanına istediğiniz yüksekliği verin. Bunu değiştirerek boyutu ayarlayabilirsiniz. */
   
-  overflow: hidden;
+  overflow: hidden; /* Resim taşarsa gizle (genellikle gerek kalmaz) */
   border-radius: 10px;
   margin-bottom: 15px;
-
-  /* Arka plan resim ayarları */
-  background-size: cover; /* Resmi orantılı olarak tüm alanı kaplayacak şekilde büyüt/küçült */
-  background-position: center top; /* Resmi ortala ve ÜST kısmını referans al */
-  background-repeat: no-repeat;
+  
+  display: flex; /* İçindeki resmi ortalamak için */
+  align-items: center;
+  justify-content: center;
 }
 
 
-/*
+
 .character-image img {
   width: auto; /* Genişliği otomatik yap */
   max-width: 100%; /* Konteynerdan taşmasın */
   height: 100%; /* Yüksekliği konteyner kadar yap */
   object-fit: contain; 
-}*/
+}
 
 .character-card:hover .character-image img {
   transform: scale(1.05);
