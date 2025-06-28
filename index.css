@@ -272,7 +272,13 @@ section.video {
 }
 
 .character-card:hover .character-image img {
-  transform: scale(1.05);
+  transform: translateX(-50%); /* Sadece yatayda ortalamayı koru, başka bir transform olmasın */
+  transition: none; /* Üzerine gelince geçiş efektini kaldır */
+}
+
+/* JavaScript'ten gelen .active class'ı dışındaki kartlara uygulanan hover efektini sıfırla */
+.character-card:not(.active):hover {
+    transform: scale(0.95); /* Aktif olmayan kartların hover durumunu da sabit tut */
 }
 
 .character-details {
