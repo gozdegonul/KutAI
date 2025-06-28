@@ -182,7 +182,7 @@ section.video {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('resimler/arkaplan.jpg'); 
+  background-image: url('resimler/arkaplan.png'); 
   background-size: cover; 
   background-position: center center; 
   z-index: 1; 
