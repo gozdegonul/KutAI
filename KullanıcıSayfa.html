@@ -523,7 +523,7 @@
                   
                   try {
                       // Kendi N8N webhook URL'nizi buraya yazın
-                      const response = await fetch("http://192.168.1.152:5678/webhook/oyun", {
+                      const response = await fetch("http://localhost:5678/webhook-test/oyun", {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
                           // Sabit ID yerine, giriş yapan kullanıcının ID'sini gönder
