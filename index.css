@@ -142,40 +142,20 @@ section {
   padding: 3.5rem 7%;
 }
 
-.video {
-  position: relative;
-  width: 100%;
-  height: 99vh;
-  overflow: hidden;
-
-}
-
-section.video {
-  position: relative;
-  /* ... mevcut diğer stilleriniz ... */
-}
-
-.bg-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 92.7vh;
-  object-fit: cover;
-}
 
 .main-hero {
-  position: relative; /* İçerideki absolute konumlandırma için gerekli */
+  position: relative; /* İçerideki absolute konumlandırma için zorunlu */
   width: 100%;
-  height: 90vh; /* Ekran yüksekliğinin %90'ı kadar olsun (navbar altı) */
-  display: flex; /* İçeriği dikey ve yatayda ortalamak için */
-  align-items: center;
-  justify-content: center;
-  overflow: hidden; /* Taşmaları engelle */
-  padding: 0; /* Bootstrap'in veya diğer kuralların padding'ini sıfırla */
+  height: 90vh; /* Ekran yüksekliğinin %90'ı */
+  display: flex; /* İçeriği ortalamak için */
+  align-items: center; /* Dikeyde ortala */
+  justify-content: center; /* Yatayda ortala */
   text-align: center;
+  overflow: hidden;
+  padding: 0;
 }
 
+/* Arka plan resmini tutan div */
 .hero-background {
   position: absolute;
   top: 0;
@@ -186,32 +166,40 @@ section.video {
   /* BURAYA KENDİ ARKA PLAN RESMİNİZİN YOLUNU YAZIN */
   background-image: url('resimler/arkaplan.png'); 
   
-  background-size: cover; /* Resmi alanı kaplayacak şekilde boyutlandır */
-  background-position: center center; /* Resmi ortala */
-  z-index: 1; /* İçeriğin arkasında kalsın */
-  
-  /* Opsiyonel: Resmin üzerine hafif bir karartma efekti için */
-  filter: brightness(0.7); 
+  background-size: cover;
+  background-position: center;
+  z-index: 1; /* Arka planda kalacak */
+  filter: brightness(0.6); /* Resmi biraz karartarak yazıyı okunur yapar */
 }
 
+/* Başlık ve buton gibi içerikleri tutan div */
 .hero-content {
   position: relative;
-  z-index: 2; /* Arka plan resminin üzerinde kalsın */
+  z-index: 2; /* Ön planda kalacak */
   color: white;
 }
 
-.main-hero .btn-danger {
+/* Başlık için stil */
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Oyuna Başla Butonu (Yeni stil) */
+.hero-button {
   font-weight: bold;
   font-size: 1.25rem;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Sadece transform ve box-shadow'a geçiş efekti */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.main-hero .btn-danger:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+/* Butonun hover efekti */
+.hero-button:hover {
+  transform: translateY(-5px); /* Fare üzerine gelince 5px yukarı kalksın */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
-
 
 /* Ekran genişliği 768px ve üzeri için (md breakpoint) */
 @media (min-width: 768px) {
