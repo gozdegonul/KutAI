@@ -208,6 +208,12 @@ section.video {
   .game-intro .col-md-6:first-child {
     padding-bottom: 0; /* Yazının altındaki boşluğu kaldır */
   }
+
+  #biz-kimiz .row.g-4 > div {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
 }
 #karakterler {
   background-color: #f8f9fa;
