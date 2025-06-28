@@ -463,70 +463,132 @@
 
 
     <script>
-      function cancelAppointment(id) {
-        if (confirm('Bu randevuyu iptal etmek istediğinize emin misiniz?')) {
-          const appointment = appointments.find(a => a.id === id);
-          if (appointment) {
-            appointment.status = 'cancelled';
-            renderUpcomingAppointments();
-            
-            // Takvimi güncelle
-            const [year, month, day] = appointment.date.split('-');
-            const date = new Date(year, month - 1, day);
-            renderCalendar(date);
-            
-            alert('Randevu iptal edildi!');
+      document.addEventListener('DOMContentLoaded', function() {
+          
+          // ==========================================================
+          // ÇIKIŞ YAPMA İŞLEVSELLİĞİ
+          // ==========================================================
+          const logoutLink = document.getElementById('logout-link');
+          if (logoutLink) {
+              logoutLink.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  
+                  // Tarayıcıdan kullanıcı oturum bilgilerini temizle
+                  localStorage.removeItem('userToken');
+                  localStorage.removeItem('userId');
+                  localStorage.removeItem('username'); // veya userEmail
+                  
+                  alert('Başarıyla çıkış yaptınız.');
+                  window.location.href = 'index.html'; // Ana sayfaya yönlendir
+              });
           }
-        }
-      }
-      document.getElementById('raporBtn').addEventListener('click', async () => {
-        try {
-          const res = await fetch("http://192.168.1.152:5678/webhook/oyun", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ playerId: "4a7f4091-4070-4123-8296-bcf76488bfa3" })
-          });
       
-          const text = await res.text();
-          try {
-            const data = JSON.parse(text);
-            if (data.pdfLink) {
-              const link = document.getElementById('pdfLink');
-              link.href = data.pdfLink;
-              link.innerText = "PDF Raporunu Gör";
-              link.style.display = 'inline';
-             
-            } else {
-              console.error("pdfLink alanı yok:", data);
-            }
-          } catch (err) {
-            console.error("Geçersiz JSON:", text);
+          // ==========================================================
+          // OYUN OYNAMA BUTONU İŞLEVSELLİĞİ
+          // ==========================================================
+          const oynaButonu = document.getElementById('btnoyna');
+          if (oynaButonu) {
+              // Tarayıcıdan giriş yapmış kullanıcının ID'sini al
+              const loggedInUserId = localStorage.getItem('userId');
+              
+              if (loggedInUserId) {
+                  // Butonun linkini kullanıcının ID'si ile güncelle
+                  const oyunLinki = 'https://ardaarslan.com.tr/oyun/';
+                  oynaButonu.href = oyunLinki + '?userId=' + loggedInUserId;
+                  // Yeni sekmede açılması için target attribute'u da ekleyelim
+                  oynaButonu.setAttribute('target', '_blank');
+              } else {
+                  // Eğer bir şekilde ID alınamazsa, butonu gizle ve hata ver
+                  oynaButonu.style.display = 'none';
+                  console.error("Oyun başlatılamadı: Giriş yapmış kullanıcı ID'si bulunamadı.");
+              }
           }
-        } catch (fetchErr) {
-          console.error("İstek hatası:", fetchErr);
-        }
+      
+          // ==========================================================
+          // RAPORU ALMA İŞLEVSELLİĞİ
+          // ==========================================================
+          const raporButonu = document.getElementById('raporBtn');
+          if (raporButonu) {
+              raporButonu.addEventListener('click', async () => {
+                  // Tarayıcıdan o an giriş yapmış olan kullanıcının ID'sini al
+                  const currentUserId = localStorage.getItem('userId');
+      
+                  if (!currentUserId) {
+                      alert("Raporu almak için giriş yapmış olmalısınız.");
+                      return;
+                  }
+      
+                  raporButonu.disabled = true;
+                  raporButonu.innerText = 'Rapor Oluşturuluyor...';
+                  
+                  try {
+                      // Kendi N8N webhook URL'nizi buraya yazın
+                      const response = await fetch("http://192.168.1.152:5678/webhook/oyun", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          // Sabit ID yerine, giriş yapan kullanıcının ID'sini gönder
+                          body: JSON.stringify({ userId: currentUserId }) 
+                      });
+      
+                      if (!response.ok) {
+                          throw new Error(`Sunucu Hatası: ${response.status}`);
+                      }
+                      
+                      const data = await response.json();
+      
+                      // 1. PDF Linkini Güncelle
+                      if (data.pdfLink) {
+                          const pdfLinkElement = document.getElementById('pdfLink');
+                          pdfLinkElement.href = data.pdfLink;
+                          pdfLinkElement.style.display = 'inline-block';
+                      }
+      
+                      // 2. Psikolojik Durum Grafiğini Güncelle
+                      if (data.scores) {
+                          updatePsychologyChart(data.scores);
+                      }
+      
+                  } catch (error) {
+                      console.error("Rapor alma işlemi sırasında bir hata oluştu:", error);
+                      alert("Rapor alınırken bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
+                  } finally {
+                      raporButonu.disabled = false;
+                      raporButonu.innerText = 'Raporu Al';
+                  }
+              });
+          }
+      
+          // ==========================================================
+          // GRAFİK GÜNCELLEME FONKSİYONU
+          // ==========================================================
+          function updatePsychologyChart(scores) {
+              // Her bir özellik için ID'leri ve skorları eşleştirerek güncelle
+              const chartMapping = {
+                  disadonukluk: { barId: 'bar-disadonukluk', textId: 'text-disadonukluk', label: 'Dışadönüklük' },
+                  uyumluluk: { barId: 'bar-uyumluluk', textId: 'text-uyumluluk', label: 'Uyumluluk' },
+                  sorumluluk: { barId: 'bar-sorumluluk', textId: 'text-sorumluluk', label: 'Sorumluluk' },
+                  duygusalDenge: { barId: 'bar-duygusaldenge', textId: 'text-duygusaldenge', label: 'Duygusal Denge' }
+                  // Deneyime açıklık vb. eklenecekse buraya ekleyin
+              };
+      
+              for (const key in scores) {
+                  if (chartMapping[key]) {
+                      const mapping = chartMapping[key];
+                      const score = scores[key];
+                      
+                      const barElement = document.getElementById(mapping.barId);
+                      const textElement = document.getElementById(mapping.textId);
+      
+                      if (barElement && textElement) {
+                          barElement.style.width = score + '%';
+                          barElement.setAttribute('aria-valuenow', score);
+                          textElement.innerText = `${mapping.label}: %${score}`;
+                      }
+                  }
+              }
+          }
       });
-      </script>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // ... (sayfadaki diğer scriptleriniz) ...
-        
-            const logoutLink = document.getElementById('logout-link'); // ID'yi kendi verdiğiniz ID ile değiştirin
-            if(logoutLink) {
-                logoutLink.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    
-                    localStorage.removeItem('userToken');
-                    localStorage.removeItem('userId');
-                    localStorage.removeItem('username');
-                    
-                    alert('Başarıyla çıkış yaptınız.');
-                    window.location.href = 'index.html'; // Ana sayfaya yönlendir
-                });
-            }
-        });
-      </script>
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
