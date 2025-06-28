@@ -11,14 +11,16 @@
       <input type="checkbox" id="chk" aria-hidden="true" />
 
       <div class="signup">
-        <form>
+        <form id="register-form">
           <label for="chk" aria-hidden="true">Kayıt Ol</label>
           <input
             type="text"
             name="username"
             placeholder="Kullanıcı Adı"
             required=""
+            id="register-username"
           />
+          
 
           <div class="password-container">
             <input
@@ -59,18 +61,19 @@
             placeholder="Kendinizden bahsedin..."
             rows="3"
           ></textarea>
-          <button type="submit">Kayıt Ol</button>
+          <button type="submit" id="register-button">Kayıt Ol</button>
         </form>
       </div>
 
       <div class="login">
-        <form>
+        <form id="login-form">
           <label for="chk" aria-hidden="true">Giriş Yap</label>
           <input
             type="text"
             name="username"
             placeholder="Kullanıcı Adı"
             required=""
+            id="login-username" 
           />
           <div class="password-container">
             <input
@@ -86,110 +89,104 @@
               >👁️</span
             >
           </div>
-          <button type="submit">Giriş Yap</button>
+          <button type="submit" id="login-button">Giriş Yap</button>
         </form>
       </div>
     </div>
     <script>
-      // --- DROPDOWN MENÜ KONTROLÜ ---
-      function toggleDropdown(id) {
-        const element = document.getElementById(id);
-        const isOpening = !element.classList.contains("show");
-
-        // Tüm açık menüleri kapat
-        document
-          .querySelectorAll(".dropdown-menu, .user-menu")
-          .forEach((el) => {
-            el.classList.remove("show");
-          });
-
-        // Yalnızca tıklanan menüyü aç
-        if (isOpening) {
-          element.classList.add("show");
-        }
-      }
-
-      // Sayfa genelinde tıklama kontrolü: menüler dışına tıklanınca kapat
-      window.onclick = function (event) {
-        if (
-          !event.target.closest(".menu-btn") &&
-          !event.target.closest(".user-btn")
-        ) {
-          document
-            .querySelectorAll(".dropdown-menu, .user-menu")
-            .forEach((el) => {
-              el.classList.remove("show");
-            });
-        }
-      };
-
-      // --- FORM GEÇİŞLERİ VE AÇMA/KAPAMA KONTROLÜ ---
-      const formOverlay = document.getElementById("formOverlay");
-      const formCheckbox = document.getElementById("chk"); // Giriş/Kayıt sekmesi kontrol
-      const openLoginLink = document.getElementById("openLoginLink");
-      const openSignupLink = document.getElementById("openSignupLink");
-
-      function openForm(showLogin) {
-        // Önce açık menüleri kapat
-        document
-          .querySelectorAll(".dropdown-menu, .user-menu")
-          .forEach((el) => {
-            el.classList.remove("show");
-          });
-
-        // Formu göster
-        formOverlay.classList.add("active");
-        document.body.classList.add("blurry");
-        document.documentElement.style.overflowY = "hidden";
-
-        // Giriş mi Kayıt mı gösterileceğini ayarla
-        formCheckbox.checked = showLogin;
-      }
-
-      function closeForm() {
-        formOverlay.classList.remove("active");
-        document.body.classList.remove("blurry");
-        document.documentElement.style.overflowY = "auto";
-      }
-
-      // Giriş bağlantısına tıklanırsa formu giriş için aç
-      if (openLoginLink) {
-        openLoginLink.addEventListener("click", (e) => {
-          e.preventDefault();
-          openForm(true);
-        });
-      }
-
-      // Kayıt bağlantısına tıklanırsa formu kayıt için aç
-      if (openSignupLink) {
-        openSignupLink.addEventListener("click", (e) => {
-          e.preventDefault();
-          openForm(false);
-        });
-      }
-
-      // Form dışına tıklanınca formu kapat
-      formOverlay.addEventListener("click", function (event) {
-        if (event.target === formOverlay) {
-          closeForm();
-        }
-      });
-
-      // Şifreyi göster/gizle ikonu için
       function togglePasswordVisibility(fieldId, iconElement) {
         const passwordField = document.getElementById(fieldId);
-        const isPassword = passwordField.type === "password";
-        passwordField.type = isPassword ? "text" : "password";
-        iconElement.textContent = isPassword ? "🙈" : "👁️";
+        if (passwordField) {
+          const isPassword = passwordField.type === "password";
+          passwordField.type = isPassword ? "text" : "password";
+          iconElement.textContent = isPassword ? "🙈" : "👁️";
+        }
       }
 
-      // ESC tuşuna basınca formu kapat
-      document.addEventListener("keydown", function (event) {
-        if (
-          event.key === "Escape" &&
-          formOverlay.classList.contains("active")
-        ) {
-          closeForm();
+      document.addEventListener('DOMContentLoaded', function() {
+          
+        
+        const registerForm = document.getElementById('register-form');
+        if (registerForm) {
+          registerForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); 
+            const username = document.getElementById('register-username').value;
+            const password = document.getElementById('registerPassword').value;
+            const registerButton = document.getElementById('register-button');
+
+            registerButton.disabled = true;
+            registerButton.innerText = 'Kaydediliyor...';
+
+            try {
+              // BURAYA KENDİ N8N KAYIT WEBHOOK URL'İNİZİ GİRİN
+              const response = await fetch('https://[N8N_URL]/webhook/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                // Backend'e hem username hem password gönderiyoruz
+                body: JSON.stringify({ username: username, password: password })
+              });
+
+              const result = await response.json();
+
+              if (response.ok) {
+                alert(result.message); 
+
+                document.getElementById('chk').checked = true; 
+              } else {
+                alert('Hata: ' + result.message); 
+              }
+            } catch (error) {
+              console.error('Kayıt sırasında hata:', error);
+              alert('Bir ağ hatası oluştu. Lütfen tekrar deneyin.');
+            } finally {
+              registerButton.disabled = false;
+              registerButton.innerText = 'Kayıt Ol';
+            }
+          });
+        }
+
+        
+        const loginForm = document.getElementById('login-form');
+        if (loginForm) {
+          loginForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('loginPassword').value;
+            const loginButton = document.getElementById('login-button');
+
+            loginButton.disabled = true;
+            loginButton.innerText = 'Giriş Yapılıyor...';
+
+            try {
+              // BURAYA KENDİ N8N GİRİŞ WEBHOOK URL'İNİZİ GİRİN
+              const response = await fetch('https://[N8N_URL]/webhook/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: username, password: password })
+              });
+
+              const result = await response.json();
+
+              if (response.ok) {
+                
+                localStorage.setItem('userToken', result.token); // n8n'den gelen token
+                localStorage.setItem('userId', result.userId);   // n8n'den gelen kullanıcı ID'si
+                localStorage.setItem('username', username);
+                
+                alert(result.message); 
+                window.location.href = 'KullanıcıSayfa.html'; 
+              } else {
+                alert('Hata: ' + result.message);
+              }
+            } catch (error) {
+              console.error('Giriş sırasında hata:', error);
+              alert('Bir ağ hatası oluştu. Lütfen tekrar deneyin.');
+            } finally {
+              loginButton.disabled = false;
+              loginButton.innerText = 'Giriş Yap';
+            }
+          });
         }
       });
     </script>
