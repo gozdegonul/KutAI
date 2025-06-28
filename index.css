@@ -253,10 +253,13 @@ section.video {
 }
 
 .character-image {
-  height: 300px; /* Yüksekliği biraz ayarlayabilirsiniz */
+  height: 400px; /* Yüksekliği biraz ayarlayabilirsiniz */
   overflow: hidden;
   border-radius: 10px;
   margin-bottom: 15px;
+  background-size: contain; /* Bu, resmin orantısını bozmadan tamamını gösterir */
+  background-position: center center; /* Resmi hem dikeyde hem yatayda ortalar */
+  background-repeat: no-repeat;
   background-color: #f8f9fa; /* Resmin arkasında kalacak boşluk için arka plan rengi */
   display: flex;
   align-items: center;
