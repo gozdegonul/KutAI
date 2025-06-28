@@ -254,29 +254,30 @@ section.video {
 
 .character-image {
   width: 100%; /* Konteyner, kartın tam genişliğini kullansın */
+  
+  /* HEDEF YÜKSEKLİK: Bu değeri piksel olarak belirleyerek ne kadar alan ayrılacağını kontrol edin. */
+  height: 380px; /* Bu değeri artırıp azaltarak resmin ne kadar görüneceğini ayarlayabilirsiniz. */
+  
+  overflow: hidden; /* BU EN ÖNEMLİ KURAL: Konteynerdan taşan resim kısımlarını GİZLER. */
+  
   position: relative; /* İçindeki resmin konumlanması için gerekli */
-  
-  /* 2:3 ORANINI KORUMAK İÇİN (1536 / 1024 = 1.5 -> 150%) */
-  /* Bu, kutunun yüksekliğinin, genişliğinin %150'si olmasını sağlar */
-  padding-top: 150%; 
-  
-  overflow: hidden;
   border-radius: 10px;
   margin-bottom: 15px;
-  background-color: #f0f0f0; /* Resim yüklenirken görünecek arka plan */
+  background-color: #f0f0f0;
 }
 
-/* RESMİN KENDİSİ (<img> ETİKETİ) */
 .character-image img {
-  /* Resmi konteynerin içine tam olarak oturtmak için */
+  /* Resmi konteynerin genişliğine sığdır */
+  width: 100%;
+  
+  /* Yüksekliği orantılı olarak ayarla (genişliğe göre) */
+  height: auto;
+  
+  /* Resmi konteynerin tam üstüne ve ortasına hizala */
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  /* Resmin orantısını bozmadan, tamamını göstermesini sağla */
-  object-fit: contain; 
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .character-card:hover .character-image img {
