@@ -252,32 +252,23 @@ section.video {
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-.character-image {
-  width: 100%; /* Konteyner, kartın tam genişliğini kullansın */
-  
-  /* HEDEF YÜKSEKLİK: Bu değeri piksel olarak belirleyerek ne kadar alan ayrılacağını kontrol edin. */
-  height: 380px; /* Bu değeri artırıp azaltarak resmin ne kadar görüneceğini ayarlayabilirsiniz. */
-  
-  overflow: hidden; /* BU EN ÖNEMLİ KURAL: Konteynerdan taşan resim kısımlarını GİZLER. */
-  
-  position: relative; /* İçindeki resmin konumlanması için gerekli */
-  border-radius: 10px;
-  margin-bottom: 15px;
-  background-color: #f0f0f0;
+#karakterler .character-image {
+  width: 100% !important;
+  height: 380px !important; /* İstediğiniz yüksekliği buraya yazın */
+  overflow: hidden !important;
+  position: relative !important;
+  border-radius: 10px !important;
+  margin-bottom: 15px !important;
+  background-color: #f0f0f0 !important;
 }
 
-.character-image img {
-  /* Resmi konteynerin genişliğine sığdır */
-  width: 100%;
-  
-  /* Yüksekliği orantılı olarak ayarla (genişliğe göre) */
-  height: auto;
-  
-  /* Resmi konteynerin tam üstüne ve ortasına hizala */
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+#karakterler .character-image img {
+  width: 100% !important;
+  height: auto !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
 }
 
 .character-card:hover .character-image img {
