@@ -620,37 +620,40 @@ footer {
   transform: translateY(0);
 }
 
- #overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    backdrop-filter: blur(5px);
-  }
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(5px);
+  overflow-y: auto; /* içerik taşarsa scroll olsun */
+  padding: 40px 20px; /* mobilde boşluk ver */
+}
 
-  #overlay.active {
-    opacity: 1;
-  }
+#overlay.active {
+  opacity: 1;
+}
 
-  #textbox-container {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    width: 600px;
-    max-width: 90vw;
-    transform: translateY(20px);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
-    border: 1px solid rgba(255,255,255,0.2);
-  }
+#textbox-container {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(20px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  border: 1px solid rgba(255,255,255,0.2);
+}
 
   #overlay.active #textbox-container {
     transform: translateY(0);
@@ -667,7 +670,7 @@ footer {
 
   textarea {
     width: 100%;
-    height: 400px;
+    height: 500px;
     resize: none;
     font-size: 18px;
     border: 1px solid #d8e1eb;
@@ -752,3 +755,11 @@ footer {
       opacity: 0;
     }
   }
+
+@media (max-width: 768px) {
+  #textbox-container {
+    padding: 20px;
+    max-height: 80vh;
+    font-size: 15px;
+  }
+}
