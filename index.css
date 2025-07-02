@@ -624,8 +624,8 @@ footer {
   display: none;
   position: fixed;
   top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: full ;
+  height: full;
   background: rgba(0, 0, 0, 0.5); /* karanlık efekt */
 
   display: flex;
@@ -734,7 +734,7 @@ footer {
 
   .btn-float {
     position: relative;
-    overflow: hidden;
+    overflow: scroll;
     transition: all 0.3s;
   }
 
