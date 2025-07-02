@@ -135,7 +135,7 @@
 
 <!-- Overlay ve metin kutusu -->
 <div id="overlay">
-  <div id="textbox-container">
+  <div id="textbox-container" >
      <span class="badge bg-danger mb-3">HİKAYE ÖN İZLEME</span>
     <div id="textbox-container">
   <div class="story-content">
@@ -208,7 +208,6 @@
   const openBtn = document.getElementById('open-textbox-btn');
   const overlay = document.getElementById('overlay');
   const closeBtn = document.getElementById('close-btn');
-  const textbox = document.getElementById('textbox-container');
 
   openBtn.addEventListener('click', e => {
     e.preventDefault();
@@ -225,6 +224,7 @@
     }, 300);
   });
 
+  // Kullanıcı overlay'in boş kısmına tıklarsa kapat
   overlay.addEventListener('click', e => {
     if (e.target === overlay) {
       overlay.classList.remove('active');
@@ -234,7 +234,6 @@
     }
   });
 </script>
-
 
                 </div>
               </div>
