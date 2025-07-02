@@ -624,11 +624,10 @@ footer {
   display: none;
   position: fixed;
   top: 0; left: 0;
-  width: full ;
-  height: full;
-  background: rgba(0, 0, 0, 0.5); /* karanlık efekt */
-
-  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -637,8 +636,13 @@ footer {
 }
 
 #overlay.active {
-  opacity: 1;
   display: flex;
+  opacity: 1;
+  pointer-events: auto; /* aktifken tıklamaları al */
+}
+
+#overlay:not(.active) {
+  pointer-events: none; /* pasifken tıklanmasın */
 }
 
 #textbox-container {
@@ -657,25 +661,6 @@ footer {
   transform: translateY(0);
   opacity: 1;
 }
-
-#textbox-container textarea {
-  width: 100%;
-  height: 300px;
-  padding: 20px;
-  resize: none;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-  background: #fefefe;
-}
-
-
-  #overlay.active #textbox-container {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
   #textbox-container h3 {
     margin-top: 0;
     color: #2c3e50;
