@@ -50,14 +50,14 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="index.html">Oyun Konusu</a>
+                    <a class="dropdown-item" href="index.html#oyunkonusu">Oyun Konusu</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="index.html"
+                    <a class="dropdown-item" href="index.html#karakterler"
                       >Oyun Karakterleri</a
                     >
                   </li>
-                  <li><a class="dropdown-item" href="index.html">Oyun Haritası</a></li>
+                  <li><a class="dropdown-item" href="index.html#OyunTuru">Oyun Haritası</a></li>
                 </ul>
               </li>
               <li class="nav-item">
@@ -223,8 +223,8 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h5>Hızlı Linkler</h5>
                     <div class="footer-links">
-                        <a href="Anasayfa.css">Anasayfa</a>
-                        <a href="Anasayfa.css">Oyun Türü</a>
+                        <a href="index.html">Anasayfa</a>
+                        <a href="index.html#oyunkonusu">Oyun Konusu</a>
                         <a href="PsikolojikTahlil.html">Psikolojik Tahlil</a>
                         <a href="#">Gizlilik Politikası</a>
                         <a href="#">Kullanım Koşulları</a>
@@ -234,7 +234,6 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>İletişim Bilgileri</h5>
                     <div class="contact-info">
-                        <p><i class="bi bi-telephone"></i> +90 555 123 45 67</p>
                         <p><i class="bi bi-envelope"></i> info@kayai.com</p>
                     </div>
                 </div>
@@ -322,9 +321,9 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const counters = [
-      { id: 'counter1', endVal: 10 },
-      { id: 'counter2', endVal: 1 },
-      { id: 'counter3', endVal: 9999 }
+      { id: 'counter1', startVal: 0 ,endVal: 10 },
+      { id: 'counter2', startVal : 0 , endVal: 1 },
+      { id: 'counter3', startVal : 0 , endVal: 9999 }
     ];
 
     const options = {
