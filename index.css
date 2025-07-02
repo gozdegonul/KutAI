@@ -641,7 +641,7 @@ footer {
 #overlay.active {
   opacity: 1;
  visibility:visible;
-    display: flex;
+
 }
 
 #textbox-container {
