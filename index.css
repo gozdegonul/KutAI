@@ -621,42 +621,31 @@ footer {
 }
 
 #overlay {
-  display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 1000px;
-  height: 700px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1050;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  visibility: hidden;
+  transition: all 0.3s ease;
 }
 
 #overlay.active {
-  display: flex;
   opacity: 1;
-  pointer-events: auto; /* aktifken tıklamaları al */
-}
-
-#overlay:not(.active) {
-  pointer-events: none; /* pasifken tıklanmasın */
+  visibility: visible;
 }
 
 #textbox-container {
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
+  max-height: 90vh;
+  overflow-y: auto;
   width: 90%;
   max-width: 800px;
-  max-height: 90vh; /* EKRANA SIĞMASI İÇİN */
-  overflow-y: auto; /* TAŞAN İÇERİĞİ KAYDIRILABİLİR YAPAR */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  transform: translateY(20px);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 #overlay.active #textbox-container {
