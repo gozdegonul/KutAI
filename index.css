@@ -673,7 +673,10 @@ footer {
 
   textarea {
     width: 100%;
-    height: 500px;
+  
+  height: 300px;
+  max-height: 400px; /* Gerekirse ekranın içine sığması için */
+
     font-size: 16px;
     border: 1px solid #d8e1eb;
     border-radius: 8px;
