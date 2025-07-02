@@ -205,34 +205,25 @@
 </div>
 
 <script>
-  const openBtn = document.getElementById('open-textbox-btn');
-  const overlay = document.getElementById('overlay');
-  const closeBtn = document.getElementById('close-btn');
+const openBtn = document.getElementById('open-textbox-btn');
+const overlay = document.getElementById('overlay');
+const closeBtn = document.getElementById('close-btn');
 
-  openBtn.addEventListener('click', e => {
-    e.preventDefault();
-    overlay.style.display = 'flex';
-    setTimeout(() => {
-      overlay.classList.add('active');
-    }, 10);
-  });
+openBtn.addEventListener('click', e => {
+  e.preventDefault();
+  overlay.classList.add('active');
+});
 
-  closeBtn.addEventListener('click', () => {
+closeBtn.addEventListener('click', () => {
+  overlay.classList.remove('active');
+});
+
+// Overlay'in boş kısmına tıklayınca da kapansın
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) {
     overlay.classList.remove('active');
-    setTimeout(() => {
-      overlay.style.display = 'none';
-    }, 300);
-  });
-
-  // Kullanıcı overlay'in boş kısmına tıklarsa kapat
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay) {
-      overlay.classList.remove('active');
-      setTimeout(() => {
-        overlay.style.display = 'none';
-      }, 300);
-    }
-  });
+  }
+});
 </script>
 
                 </div>
