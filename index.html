@@ -216,30 +216,23 @@
   </div>
 </div>
 
-<script>
-const openBtn = document.getElementById('open-textbox-btn');
-const overlay = document.getElementById('overlay');
-const closeBtn = document.getElementById('close-btn');
-
-openBtn.addEventListener('click', e => {
-  e.preventDefault();
-  overlay.classList.add('active');
-  document.body.style.overflow = 'hidden'; // Sayfa kaydırmayı engelle
+    <script>
+      
+document.getElementById("open-textbox-btn").addEventListener("click", () => {
+  document.getElementById("overlay").classList.add("active");
 });
 
-closeBtn.addEventListener('click', () => {
-  overlay.classList.remove('active');
-  document.body.style.overflow = 'auto'; // Sayfa kaydırmayı geri aç
+document.getElementById("close-btn").addEventListener("click", () => {
+  document.getElementById("overlay").classList.remove("active");
 });
 
-// Overlay'in boş kısmına tıklayınca da kapansın
-overlay.addEventListener('click', (e) => {
-  if (e.target === overlay) {
-    overlay.classList.remove('active');
-    document.body.style.overflow = 'auto'; // Sayfa kaydırmayı geri aç
+// Overlay dışına tıklayınca da kapansın
+document.getElementById("overlay").addEventListener("click", (e) => {
+  if (e.target === e.currentTarget) {
+    e.currentTarget.classList.remove("active");
   }
 });
-</script>
+    </script>
 
         
 
