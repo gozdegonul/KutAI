@@ -720,7 +720,7 @@ footer {
 
   .btn-float {
     position: relative;
-    overflow: scroll;
+    overflow: hidden;
     transition: all 0.3s;
   }
 
