@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Giriş ve Kayıt</title>
     <link rel="stylesheet" href="Giriş.css" />
   </head>
   <body>
@@ -14,15 +14,15 @@
         <form id="register-form">
           <label for="chk" aria-hidden="true">Kayıt Ol</label>
 
-          <input type="text" name="username" placeholder="Kullanıcı Adı" required="" id="register-username"/>
+          <input type="text" name="username" placeholder="Kullanıcı Adı" required="" id="register-username" />
 
           <div class="password-container">
             <input type="password" id="registerPassword" name="password" placeholder="Şifre" required=""/>
-            <span class="eye-icon" onclick="togglePasswordVisibility('registerPassword', this)">👁️</span>
+            <span class="eye-icon" onclick="togglePasswordVisibility('registerPassword', this)">👁</span>
           </div>
 
-          <input type="date" name="birthdate" placeholder="Doğum Tarihi" required="" id="register-birthdate"/>
-          
+          <input type="date" name="birthdate" placeholder="Doğum Tarihi" required="" id="register-birthdate" />
+
           <select name="studentType" required="" id="register-studentType">
             <option disabled="" selected="" value="">Öğrenci Türü</option>
             <option value="ilkokul">İlkokul</option>
@@ -31,108 +31,79 @@
             <option value="universite">Üniversite</option>
             <option value="diger">Diğer</option>
           </select>
-          
+
           <select required="" name="gender" id="register-gender">
             <option disabled="" selected="" value="">Cinsiyet</option>
             <option value="erkek">Erkek</option>
             <option value="kiz">Kız</option>
           </select>
-          
-          <textarea
-            name="about"
-            placeholder="Kendinizden bahsedin..."
-            rows="3"
-            id="register-about"
-          ></textarea>
+
+          <textarea name="about" placeholder="Kendinizden bahsedin..." rows="3" id="register-about"></textarea>
           <button type="submit" id="register-button">Kayıt Ol</button>
         </form>
       </div>
-    
 
       <div class="login">
         <form id="login-form">
           <label for="chk" aria-hidden="true">Giriş Yap</label>
-          <input
-            type="text"
-            name="username"
-            placeholder="Kullanıcı Adı"
-            required=""
-            id="login-username" 
-          />
+          <input type="text" name="username" placeholder="Kullanıcı Adı" required="" id="login-username" />
           <div class="password-container">
-            <input
-              type="password"
-              id="loginPassword"
-              name="pswd"
-              placeholder="Şifre"
-              required=""
-            />
-            <span
-              class="eye-icon"
-              onclick="togglePasswordVisibility('loginPassword', this)"
-              >👁️</span
-            >
+            <input type="password" id="loginPassword" name="pswd" placeholder="Şifre" required="" />
+            <span class="eye-icon" onclick="togglePasswordVisibility('loginPassword', this)">👁</span>
           </div>
           <button type="submit" id="login-button">Giriş Yap</button>
         </form>
       </div>
     </div>
+
     <script>
       function togglePasswordVisibility(fieldId, iconElement) {
         const passwordField = document.getElementById(fieldId);
         if (passwordField) {
           const isPassword = passwordField.type === "password";
           passwordField.type = isPassword ? "text" : "password";
-          iconElement.textContent = isPassword ? "🙈" : "👁️";
+          iconElement.textContent = isPassword ? "🙈" : "👁";
         }
       }
 
-      document.addEventListener('DOMContentLoaded', function() {
-          
-        
-       const registerForm = document.getElementById('register-form');
+      document.addEventListener('DOMContentLoaded', function () {
+        const registerForm = document.getElementById('register-form');
         if (registerForm) {
-          registerForm.addEventListener('submit', async function(event) {
-            event.preventDefault(); // Formun varsayılan davranışını engelle
-        
-            // --- TÜM VERİLERİ ID'LERİ ÜZERİNDEN AL ---
+          registerForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
             const username = document.getElementById('register-username').value;
             const password = document.getElementById('registerPassword').value;
             const birthdate = document.getElementById('register-birthdate').value;
             const studentType = document.getElementById('register-studentType').value;
             const gender = document.getElementById('register-gender').value;
-            const about = document.getElementById('register-about').value; // 'about' olarak değiştirdim
-            
+            const about = document.getElementById('register-about').value;
+
             const registerButton = document.getElementById('register-button');
-        
             registerButton.disabled = true;
             registerButton.innerText = 'Kaydediliyor...';
-        
+
             try {
-              // BURAYA KENDİ N8N KAYIT WEBHOOK URL'İNİZİ GİRİN
-              const response = await fetch("https://gulinhalgur.app.n8n.cloud/webhook/register", { // register webhook'u olmalı
+              const response = await fetch("https://corsproxy.io/?https://gulinhalgur.app.n8n.cloud/webhook/register", {
                 method: 'POST',
-                // headers kısmı zaten kodunuzda vardı ve doğruydu, bu iyi bir şey!
                 headers: { 'Content-Type': 'application/json' },
-                
-                // --- BODY KISMINA TÜM VERİLERİ EKLE ---
-                body: JSON.stringify({ 
-                  username: username, 
+                body: JSON.stringify({
+                  username: username,
                   password: password,
                   birthdate: birthdate,
                   studentType: studentType,
                   gender: gender,
-                  description: about // 'description' anahtarı arkadaşınızın örneğiyle uyumlu
+                  description: about
                 })
               });
-        
+
               const result = await response.json();
-        
+
               if (response.ok) {
-                alert(result.message); 
-                document.getElementById('chk').checked = true; 
+                alert(result.message);
+                document.getElementById('chk').checked = true;
               } else {
-                alert('Hata: ' + result.message); 
+                alert('Hata: ' + result.message);
               }
             } catch (error) {
               console.error('Kayıt sırasında hata:', error);
@@ -144,53 +115,5 @@
           });
         }
 
-        
         const loginForm = document.getElementById('login-form');
         if (loginForm) {
-          loginForm.addEventListener('submit', async function(event) {
-            event.preventDefault();
-
-            const username = document.getElementById('login-username').value;
-            const password = document.getElementById('loginPassword').value;
-            const loginButton = document.getElementById('login-button');
-
-            loginButton.disabled = true;
-            loginButton.innerText = 'Giriş Yapılıyor...';
-
-            try {
-              // BURAYA KENDİ N8N GİRİŞ WEBHOOK URL'İNİZİ GİRİN
-              const response = await fetch('https://gulinhalgur.app.n8n.cloud/webhook/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: username, password: password })
-              });
-
-              const result = await response.json();
-
-              if (response.ok) {
-                
-                localStorage.setItem('userToken', result.token); // n8n'den gelen token
-                localStorage.setItem('userId', result.userId);   // n8n'den gelen kullanıcı ID'si
-                localStorage.setItem('username', username);
-                
-                alert(result.message); 
-                window.location.href = 'KullanıcıSayfa.html'; 
-              } else {
-                alert('Hata: ' + result.message);
-              }
-            } catch (error) {
-              console.error('Giriş sırasında hata:', error);
-              alert('Bir ağ hatası oluştu. Lütfen tekrar deneyin.');
-            } finally {
-              loginButton.disabled = false;
-              loginButton.innerText = 'Giriş Yap';
-            }
-          });
-        }
-      });
-
-      
-    </script>
-
-  </body>
-</html>
