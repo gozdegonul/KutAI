@@ -56,64 +56,114 @@
       </div>
     </div>
 
-    <script>
-      function togglePasswordVisibility(fieldId, iconElement) {
-        const passwordField = document.getElementById(fieldId);
-        if (passwordField) {
-          const isPassword = passwordField.type === "password";
-          passwordField.type = isPassword ? "text" : "password";
-          iconElement.textContent = isPassword ? "🙈" : "👁";
-        }
-      }
+    <!-- HTML KISMINIZ ZATEN DOĞRU, DEĞİŞTİRMENİZE GEREK YOK -->
 
-      document.addEventListener('DOMContentLoaded', function () {
-        const registerForm = document.getElementById('register-form');
-        if (registerForm) {
-          registerForm.addEventListener('submit', async function (event) {
-            event.preventDefault();
+<script>
+  function togglePasswordVisibility(fieldId, iconElement) {
+    const passwordField = document.getElementById(fieldId);
+    if (passwordField) {
+      const isPassword = passwordField.type === "password";
+      passwordField.type = isPassword ? "text" : "password";
+      iconElement.textContent = isPassword ? "🙈" : "👁";
+    }
+  }
 
-            const username = document.getElementById('register-username').value;
-            const password = document.getElementById('registerPassword').value;
-            const birthdate = document.getElementById('register-birthdate').value;
-            const studentType = document.getElementById('register-studentType').value;
-            const gender = document.getElementById('register-gender').value;
-            const about = document.getElementById('register-about').value;
+  document.addEventListener('DOMContentLoaded', function () {
+    // --- KAYIT FORMU (SİZİN KODUNUZ ZATEN DOĞRUYDU) ---
+    const registerForm = document.getElementById('register-form');
+    if (registerForm) {
+      registerForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
 
-            const registerButton = document.getElementById('register-button');
-            registerButton.disabled = true;
-            registerButton.innerText = 'Kaydediliyor...';
+        const username = document.getElementById('register-username').value;
+        const password = document.getElementById('registerPassword').value;
+        const birthdate = document.getElementById('register-birthdate').value;
+        const studentType = document.getElementById('register-studentType').value;
+        const gender = document.getElementById('register-gender').value;
+        const about = document.getElementById('register-about').value;
 
-            try {
-              const response = await fetch("https://corsproxy.io/?https://gulinhalgur.app.n8n.cloud/webhook/register", {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  username: username,
-                  password: password,
-                  birthdate: birthdate,
-                  studentType: studentType,
-                  gender: gender,
-                  description: about
-                })
-              });
+        const registerButton = document.getElementById('register-button');
+        registerButton.disabled = true;
+        registerButton.innerText = 'Kaydediliyor...';
 
-              const result = await response.json();
-
-              if (response.ok) {
-                alert(result.message);
-                document.getElementById('chk').checked = true;
-              } else {
-                alert('Hata: ' + result.message);
-              }
-            } catch (error) {
-              console.error('Kayıt sırasında hata:', error);
-              alert('Bir ağ hatası oluştu. Lütfen tekrar deneyin.');
-            } finally {
-              registerButton.disabled = false;
-              registerButton.innerText = 'Kayıt Ol';
-            }
+        try {
+          const response = await fetch("https://corsproxy.io/?https://gulinhalgur.app.n8n.cloud/webhook/register", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              username: username,
+              password: password,
+              birthdate: birthdate,
+              studentType: studentType,
+              gender: gender,
+              description: about
+            })
           });
-        }
 
-        const loginForm = document.getElementById('login-form');
-        if (loginForm) {
+          // response.json() her zaman çağrılmalı, hata durumunda bile
+          const result = await response.json();
+
+          if (response.ok) { // HTTP 200-299 durum kodlarını kontrol eder
+            alert(result.message || "Kayıt başarılı!");
+            // Kayıt başarılıysa, kullanıcıyı giriş sekmesine yönlendir
+            document.getElementById('chk').checked = true;
+          } else {
+            // Sunucudan gelen hata mesajını göster
+            alert('Hata: ' + (result.message || "Bilinmeyen bir hata oluştu."));
+          }
+        } catch (error) {
+          console.error('Kayıt sırasında hata:', error);
+          alert('Bir ağ hatası oluştu. Lütfen tekrar deneyin.');
+        } finally {
+          registerButton.disabled = false;
+          registerButton.innerText = 'Kayıt Ol';
+        }
+      });
+    }
+
+    // --- GİRİŞ FORMU (EKSİK OLAN KISIM BURASIYDI) ---
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+      loginForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById('login-username').value;
+        const password = document.getElementById('loginPassword').value;
+        const loginButton = document.getElementById('login-button');
+
+        loginButton.disabled = true;
+        loginButton.innerText = 'Giriş Yapılıyor...';
+
+        try {
+          // *** BURAYA DA CORS PROXY EKLENDİ ***
+          const response = await fetch('https://corsproxy.io/?https://gulinhalgur.app.n8n.cloud/webhook/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: username, password: password })
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            localStorage.setItem('userToken', result.token);
+            localStorage.setItem('userId', result.userId);
+            localStorage.setItem('username', username);
+
+            alert(result.message || "Giriş başarılı!");
+            window.location.href = 'KullanıcıSayfa.html';
+          } else {
+            alert('Hata: ' + (result.message || "Kullanıcı adı veya şifre hatalı."));
+          }
+        } catch (error) {
+          console.error('Giriş sırasında hata:', error);
+          alert('Bir ağ hatası oluştu. Lütfen tekrar deneyin.');
+        } finally {
+          loginButton.disabled = false;
+          loginButton.innerText = 'Giriş Yap';
+        }
+      });
+    }
+  });
+</script>
+ </body>
+</html>
