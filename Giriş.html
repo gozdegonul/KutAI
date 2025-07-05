@@ -13,37 +13,17 @@
       <div class="signup">
         <form id="register-form">
           <label for="chk" aria-hidden="true">Kayıt Ol</label>
-          <input
-            type="text"
-            name="username"
-            placeholder="Kullanıcı Adı"
-            required=""
-            id="register-username"
-          />
-          
+
+          <input type="text" name="username" placeholder="Kullanıcı Adı" required="" id="register-username"/>
 
           <div class="password-container">
-            <input
-              type="password"
-              id="signupPassword"
-              name="password"
-              placeholder="Şifre"
-              required=""
-            />
-            <span
-              class="eye-icon"
-              onclick="togglePasswordVisibility('signupPassword', this)"
-              >👁️</span
-            >
+            <input type="password" id="registerPassword" name="password" placeholder="Şifre" required=""/>
+            <span class="eye-icon" onclick="togglePasswordVisibility('registerPassword', this)">👁️</span>
           </div>
 
-          <input
-            type="date"
-            name="birthdate"
-            placeholder="Doğum Tarihi"
-            required=""
-          />
-          <select name="studentType" required="">
+          <input type="date" name="birthdate" placeholder="Doğum Tarihi" required="" id="register-birthdate"/>
+          
+          <select name="studentType" required="" id="register-studentType">
             <option disabled="" selected="" value="">Öğrenci Türü</option>
             <option value="ilkokul">İlkokul</option>
             <option value="ortaokul">Ortaokul</option>
@@ -51,18 +31,20 @@
             <option value="universite">Üniversite</option>
             <option value="diger">Diğer</option>
           </select>
-          <select required="" name="gender">
+          
+          <select required="" name="gender" id="register-gender">
             <option disabled="" selected="" value="">Cinsiyet</option>
             <option value="erkek">Erkek</option>
             <option value="kiz">Kız</option>
           </select>
+          
           <textarea
             name="about"
             placeholder="Kendinizden bahsedin..."
             rows="3"
+            id="register-about"
           ></textarea>
           <button type="submit" id="register-button">Kayıt Ol</button>
-    
         </form>
       </div>
     
@@ -108,31 +90,46 @@
       document.addEventListener('DOMContentLoaded', function() {
           
         
-        const registerForm = document.getElementById('register-form');
+       const registerForm = document.getElementById('register-form');
         if (registerForm) {
           registerForm.addEventListener('submit', async function(event) {
-            event.preventDefault(); 
+            event.preventDefault(); // Formun varsayılan davranışını engelle
+        
+            // --- TÜM VERİLERİ ID'LERİ ÜZERİNDEN AL ---
             const username = document.getElementById('register-username').value;
             const password = document.getElementById('registerPassword').value;
+            const birthdate = document.getElementById('register-birthdate').value;
+            const studentType = document.getElementById('register-studentType').value;
+            const gender = document.getElementById('register-gender').value;
+            const about = document.getElementById('register-about').value; // 'about' olarak değiştirdim
+            
             const registerButton = document.getElementById('register-button');
-
+        
             registerButton.disabled = true;
             registerButton.innerText = 'Kaydediliyor...';
-
+        
             try {
               // BURAYA KENDİ N8N KAYIT WEBHOOK URL'İNİZİ GİRİN
-              const response = await fetch('http://localhost:5678/webhook-test/oyun', {
+              const response = await fetch("https://gulinhalgur.app.n8n.cloud/webhook/register", { // register webhook'u olmalı
                 method: 'POST',
+                // headers kısmı zaten kodunuzda vardı ve doğruydu, bu iyi bir şey!
                 headers: { 'Content-Type': 'application/json' },
-                // Backend'e hem username hem password gönderiyoruz
-                body: JSON.stringify({ username: username, password: password })
+                
+                // --- BODY KISMINA TÜM VERİLERİ EKLE ---
+                body: JSON.stringify({ 
+                  username: username, 
+                  password: password,
+                  birthdate: birthdate,
+                  studentType: studentType,
+                  gender: gender,
+                  description: about // 'description' anahtarı arkadaşınızın örneğiyle uyumlu
+                })
               });
-
+        
               const result = await response.json();
-
+        
               if (response.ok) {
                 alert(result.message); 
-
                 document.getElementById('chk').checked = true; 
               } else {
                 alert('Hata: ' + result.message); 
