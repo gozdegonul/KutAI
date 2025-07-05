@@ -159,7 +159,7 @@
 
             try {
               // BURAYA KENDİ N8N GİRİŞ WEBHOOK URL'İNİZİ GİRİN
-              const response = await fetch('http://localhost:5678/webhook-test/oyun', {
+              const response = await fetch('https://gulinhalgur.app.n8n.cloud/webhook/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username: username, password: password })
